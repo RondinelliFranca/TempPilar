@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{0E4918FD-932A-4129-9C2F-FB450AEFDB0B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 -Service", "2 -Service", "{2D9CA1CA-8B62-403B-8832-58B3F14704B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{28C012B5-5167-4B2D-BF61-7A0E8A98A47F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Api", "Pilar_Facilitis.Api\Pilar_Facilitis.Api.csproj", "{97BCB427-C5EC-41F4-A3AE-11DC11F73BB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{B4B68244-647C-4E9A-9718-AD8D1BE604A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modelos", "Modelos", "{3BCEAFE9-94E1-4997-8453-97A7BEC8F560}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{803905F8-AC18-42FD-A6ED-5E104A44D23E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{C7962524-EAC0-411E-AFEE-E7CFF5E45DE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Services", "Pilar_Facilitis.Services\Pilar_Facilitis.Services.csproj", "{614242B4-CECB-4C98-A00B-4CC8459A19C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{AB62FED9-69F3-4B55-A144-591A99946162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Domain", "Pilar_Facilitis.Domain\Pilar_Facilitis.Domain.csproj", "{645619B8-2E88-4D73-9D37-8CBD276D0933}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Infra.Data", "Pilar_Facilitis.Infra.Data\Pilar_Facilitis.Infra.Data.csproj", "{C62117DE-36F7-44D7-AE3E-E817D78B9BF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Infra.CrossCutting", "Pilar_Facilitis.Infra.CrossCutting\Pilar_Facilitis.Infra.CrossCutting.csproj", "{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97BCB427-C5EC-41F4-A3AE-11DC11F73BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97BCB427-C5EC-41F4-A3AE-11DC11F73BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97BCB427-C5EC-41F4-A3AE-11DC11F73BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97BCB427-C5EC-41F4-A3AE-11DC11F73BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{614242B4-CECB-4C98-A00B-4CC8459A19C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{614242B4-CECB-4C98-A00B-4CC8459A19C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{614242B4-CECB-4C98-A00B-4CC8459A19C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{614242B4-CECB-4C98-A00B-4CC8459A19C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645619B8-2E88-4D73-9D37-8CBD276D0933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645619B8-2E88-4D73-9D37-8CBD276D0933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645619B8-2E88-4D73-9D37-8CBD276D0933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645619B8-2E88-4D73-9D37-8CBD276D0933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C62117DE-36F7-44D7-AE3E-E817D78B9BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C62117DE-36F7-44D7-AE3E-E817D78B9BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C62117DE-36F7-44D7-AE3E-E817D78B9BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C62117DE-36F7-44D7-AE3E-E817D78B9BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{97BCB427-C5EC-41F4-A3AE-11DC11F73BB9} = {0E4918FD-932A-4129-9C2F-FB450AEFDB0B}
+		{3BCEAFE9-94E1-4997-8453-97A7BEC8F560} = {28C012B5-5167-4B2D-BF61-7A0E8A98A47F}
+		{C7962524-EAC0-411E-AFEE-E7CFF5E45DE6} = {B4B68244-647C-4E9A-9718-AD8D1BE604A2}
+		{614242B4-CECB-4C98-A00B-4CC8459A19C4} = {2D9CA1CA-8B62-403B-8832-58B3F14704B3}
+		{AB62FED9-69F3-4B55-A144-591A99946162} = {B4B68244-647C-4E9A-9718-AD8D1BE604A2}
+		{645619B8-2E88-4D73-9D37-8CBD276D0933} = {28C012B5-5167-4B2D-BF61-7A0E8A98A47F}
+		{C62117DE-36F7-44D7-AE3E-E817D78B9BF5} = {C7962524-EAC0-411E-AFEE-E7CFF5E45DE6}
+		{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9} = {AB62FED9-69F3-4B55-A144-591A99946162}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC5C8C3A-247C-48D1-9884-2630DFA5C601}
+	EndGlobalSection
+EndGlobal
