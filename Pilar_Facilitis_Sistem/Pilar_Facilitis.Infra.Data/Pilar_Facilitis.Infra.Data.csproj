@@ -5,12 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\" />
-    <Folder Include="EntityConfig\" />
+    <Folder Include="Contexts\EntityConfig\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Migrations\" />
     <Folder Include="UoW\" />
     <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LinqKit.Core" Version="1.1.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.3" />
   </ItemGroup>
 
 </Project>
