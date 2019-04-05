@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Pilar_Facilitis.Domain.Entities
 {
-    public class FuncionarioPilar
+    public class Funcionario
     {
-        public Guid FuncId { get; set; }
+        public Funcionario()
+        {
+            this.FuncId = Guid.NewGuid();
+        }
 
-        public EnderecoFuncionario endereco { get; set; }
+        public Guid FuncId { get; set; }        
 
         public string Nome { get; set; }
 
@@ -26,12 +26,5 @@ namespace Pilar_Facilitis.Domain.Entities
         public string Escolaridade { get; set; }
 
         public int Qtd_Dependentes { get; set; }
-
-        public FuncionarioPilar()
-        {
-            this.FuncId = Guid.NewGuid();
-            endereco = new EnderecoFuncionario();
-        }
-
     }
 }

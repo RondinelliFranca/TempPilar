@@ -6,23 +6,35 @@ using System.Threading.Tasks;
 
 namespace Pilar_Facilitis.Domain.Entities
 {
-    public class ClientePilar
+    public class Cliente
     {
-        public Guid ClienteId { get; set; }
-        public EnderecoClientePilar endereco { get; set; }
-
-        public string RazaoSocial { get; set; }
-        public string NomeFantasia { get; set; }
-        public string CNPJ { get; set; }
-        public string TelefoneFixo { get; set; }
-        public string TelefoneCel { get; set; }
-        public string NomeResponsavel { get; set; }
-        public string Email { get; set; }
-
-        public ClientePilar()
+        public Cliente()
         {
             this.ClienteId = Guid.NewGuid();
-            endereco = new EnderecoClientePilar();
         }
+
+        public Guid ClienteId { get; set; }
+
+        public virtual Endereco Endereco { get; set; }
+
+        public Guid EnderecoId { get; set; }
+
+        public string RazaoSocial { get; set; }
+
+        public string NomeFantasia { get; set; }
+
+        public string CNPJ { get; set; }
+
+        public string Telefone { get; set; }
+
+        public string Celular { get; set; }
+
+        public string NomeResponsavel { get; set; }
+
+        public string Email { get; set; }
+
+        public ICollection<PontoAtendimentos> PontosAtendimento { get; set; }
+
+        
     }
 }

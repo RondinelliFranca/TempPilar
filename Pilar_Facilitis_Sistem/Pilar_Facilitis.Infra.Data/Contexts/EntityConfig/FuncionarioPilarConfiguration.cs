@@ -4,9 +4,9 @@ using Pilar_Facilitis.Domain.Entities;
 
 namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 {
-    public class FuncionarioPilarConfiguration : IEntityTypeConfiguration<FuncionarioPilar>
+    public class FuncionarioPilarConfiguration : IEntityTypeConfiguration<Funcionario>
     {      
-        public void Configure(EntityTypeBuilder<FuncionarioPilar> builder)
+        public void Configure(EntityTypeBuilder<Funcionario> builder)
         {
             builder.HasKey(c => c.FuncId);
 

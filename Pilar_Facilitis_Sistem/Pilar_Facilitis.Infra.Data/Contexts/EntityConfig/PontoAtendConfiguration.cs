@@ -25,7 +25,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
                 .IsRequired()
                 .HasMaxLength(60);
 
-            //HasRequired(p => p.ClientePilar)
+            //HasRequired(p => p.Cliente)
             //    .WithMany()
             //    .HasForeignKey(p => p.ClienteId);
         }

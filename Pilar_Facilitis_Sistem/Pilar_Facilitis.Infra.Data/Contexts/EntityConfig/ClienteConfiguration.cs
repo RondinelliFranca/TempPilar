@@ -4,9 +4,9 @@ using Pilar_Facilitis.Domain.Entities;
 
 namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 {
-    public class ClientePilarConfiguration : IEntityTypeConfiguration<ClientePilar>
+    public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
     {
-        public void Configure(EntityTypeBuilder<ClientePilar> builder)
+        public void Configure(EntityTypeBuilder<Cliente> builder)
         {
             builder.ToTable("Cliente");
             builder.HasKey(e => e.ClienteId);
@@ -27,11 +27,11 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
                 .IsRequired()
                 .HasMaxLength(200);
 
-            builder.Property(c => c.TelefoneCel)
+            builder.Property(c => c.Celular)
                 .IsRequired()
                 .HasMaxLength(9);
 
-            builder.Property(c => c.TelefoneFixo)
+            builder.Property(c => c.Telefone)
                 .IsRequired()
                 .HasMaxLength(8);
 
