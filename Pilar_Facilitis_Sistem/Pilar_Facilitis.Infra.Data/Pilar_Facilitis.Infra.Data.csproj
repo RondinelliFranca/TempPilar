@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Contexts\Base\IContexto.cs" />
     <Compile Remove="Contexts\EntityConfig\EnderecoFuncionarioConfiguration.cs" />
     <Compile Remove="Contexts\EntityConfig\EnderecoPontoAtendConfiguration.cs" />
   </ItemGroup>
