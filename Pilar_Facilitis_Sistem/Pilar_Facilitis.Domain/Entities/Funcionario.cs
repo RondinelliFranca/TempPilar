@@ -26,5 +26,9 @@ namespace Pilar_Facilitis.Domain.Entities
         public string Escolaridade { get; set; }
 
         public int Qtd_Dependentes { get; set; }
+
+        //public virtual Endereco Endereco { get; set; }
+
+        //public Guid EnderecoId { get; set; }
     }
 }

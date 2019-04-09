@@ -25,12 +25,13 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public int Cidade { get; set; }
 
-        #region Relacionamentos
-        public ICollection<Cliente> Clientes { get; set; }
-        public ICollection<Funcionario> Funcionarios { get; set; }
-        public ICollection<PontoAtendimentos> PontosAtendimentos { get; set; }
-
-        #endregion
+        public virtual Cliente Cliente { get; set; }
+        public Guid? ClienteId { get; set; }
+        public virtual Funcionario Funcionario { get; set; }
+        public Guid? FuncionarioId { get; set; }
+        public virtual PontoAtendimentos PontoAtendimento { get; set; }
+        public Guid? PontoAtendimentoId { get; set; }
+        
 
     }
 }

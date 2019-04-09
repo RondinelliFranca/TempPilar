@@ -24,6 +24,12 @@ namespace Pilar_Facilitis.Domain.Entities
         public string Email { get; set; }
 
         public Guid ClienteId { get; set; }
-            
+
+        public virtual Cliente Cliente { get; set; }
+
+        //public virtual Endereco Endereco { get; set; }
+
+        //public Guid EnderecoId { get; set; }
+
     }
 }

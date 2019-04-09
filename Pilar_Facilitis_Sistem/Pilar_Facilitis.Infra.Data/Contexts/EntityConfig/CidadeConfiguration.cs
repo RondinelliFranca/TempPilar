@@ -18,13 +18,13 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.Property(e => e.Sigla).IsRequired();
 
-            builder.HasOne(x => x.Pais)
-                .WithOne()
-                .HasForeignKey<Pais>(p => p.PaisId);
+            //builder.HasOne(x => x.Pais)
+            //    .WithOne()
+            //    .HasForeignKey<Pais>(p => p.PaisId);
 
-            builder.HasOne(x => x.Estado)
-                .WithOne()
-                .HasForeignKey<Estado>(p => p.EstadoId);            
+            //builder.HasOne(x => x.Estado)
+            //    .WithOne()
+            //    .HasForeignKey<Estado>(p => p.EstadoId);            
         }
     }
 }

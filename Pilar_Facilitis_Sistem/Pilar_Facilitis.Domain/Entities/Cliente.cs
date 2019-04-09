@@ -15,9 +15,9 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public Guid ClienteId { get; set; }
 
-        public virtual Endereco Endereco { get; set; }
+        //public virtual Endereco Endereco { get; set; }
 
-        public Guid EnderecoId { get; set; }
+        //public Guid EnderecoId { get; set; }
 
         public string RazaoSocial { get; set; }
 
@@ -33,7 +33,7 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public string Email { get; set; }
 
-        public ICollection<PontoAtendimentos> PontosAtendimento { get; set; }
+        public virtual ICollection<PontoAtendimentos> PontosAtendimento { get; set; }
 
         
     }

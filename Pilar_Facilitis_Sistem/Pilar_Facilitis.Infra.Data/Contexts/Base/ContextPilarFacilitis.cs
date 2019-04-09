@@ -26,7 +26,15 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.Base
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ForSqlServerUseIdentityColumns();
-            CidadeConfiguration.Mapper()
+            builder.ApplyConfiguration(new CidadeConfiguration());
+            builder.ApplyConfiguration(new ClienteConfiguration());
+            builder.ApplyConfiguration(new EquipamentosConfiguration());
+            builder.ApplyConfiguration(new EstadoConfiguration());
+            builder.ApplyConfiguration(new FuncionarioPilarConfiguration());
+            builder.ApplyConfiguration(new PaisConfiguration());
+            builder.ApplyConfiguration(new PontoAtendConfiguration());
+            builder.ApplyConfiguration(new ServicosConfiguration());
+            builder.ApplyConfiguration(new UsuariosConfiguration());
         }
 
 
