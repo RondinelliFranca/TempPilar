@@ -19,10 +19,10 @@ namespace Pilar_Facilitis.Infra.Data.Repository
             Tabela = contexto.Tabela<TEntidade>();
         }
 
-        //public async virtual Task<IEnumerable<TEntidade>> BuscaTodosAsync()
-        //{
-        //    //return (await Tabela.AsNoTracking());
-        //}
+        public async virtual Task<IEnumerable<TEntidade>> BuscaTodosAsync()
+        {
+            return Tabela;
+        }
 
         public async virtual Task<TEntidade> BuscaAsync(Guid id)
         {
