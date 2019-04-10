@@ -26,10 +26,5 @@ namespace Pilar_Facilitis.Domain.Entities
         public Guid ClienteId { get; set; }
 
         public virtual Cliente Cliente { get; set; }
-
-        //public virtual Endereco Endereco { get; set; }
-
-        //public Guid EnderecoId { get; set; }
-
     }
 }

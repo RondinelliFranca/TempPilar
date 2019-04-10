@@ -17,6 +17,6 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public string Desc_Servicos { get; set; }
 
-        public decimal Area { get; set; }
+        public float Area { get; set; }
     }
 }

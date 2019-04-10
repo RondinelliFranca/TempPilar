@@ -17,7 +17,7 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public string Desc_Equip { get; set; }
 
-        public decimal Capacidade { get; set; }
+        public float Capacidade { get; set; }
 
         public string Fabricante { get; set; }
 

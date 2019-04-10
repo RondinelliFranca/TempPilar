@@ -10,14 +10,14 @@ using Pilar_Facilitis.Infra.Data.Contexts.Base;
 namespace Pilar_Facilitis.Infra.Data.Migrations
 {
     [DbContext(typeof(ContextPilarFacilitis))]
-    [Migration("20190409210544_InitialCreate")]
+    [Migration("20190410015112_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -27,22 +27,14 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EstadoId");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(100);
-
-                    b.Property<int>("PaisId");
 
                     b.Property<string>("Sigla")
                         .IsRequired();
 
                     b.HasKey("CidadeId");
-
-                    b.HasIndex("EstadoId");
-
-                    b.HasIndex("PaisId");
 
                     b.ToTable("Cidade");
                 });
@@ -124,7 +116,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                     b.Property<Guid>("EquipamentoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<decimal>("Capacidade");
+                    b.Property<float>("Capacidade");
 
                     b.Property<string>("Desc_Equip")
                         .IsRequired()
@@ -151,13 +143,9 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<int>("PaisId");
-
                     b.Property<string>("Sigla");
 
                     b.HasKey("EstadoId");
-
-                    b.HasIndex("PaisId");
 
                     b.ToTable("Estados");
                 });
@@ -251,7 +239,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                     b.Property<Guid>("ServicosId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<decimal>("Area");
+                    b.Property<float>("Area");
 
                     b.Property<string>("Desc_Servicos")
                         .IsRequired()
@@ -283,19 +271,6 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Cidade", b =>
-                {
-                    b.HasOne("Pilar_Facilitis.Domain.Entities.Estado", "Estado")
-                        .WithMany()
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Pilar_Facilitis.Domain.Entities.Pais", "Pais")
-                        .WithMany()
-                        .HasForeignKey("PaisId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Endereco", b =>
                 {
                     b.HasOne("Pilar_Facilitis.Domain.Entities.Cliente", "Cliente")
@@ -309,14 +284,6 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                     b.HasOne("Pilar_Facilitis.Domain.Entities.PontoAtendimentos", "PontoAtendimento")
                         .WithMany()
                         .HasForeignKey("PontoAtendimentoId");
-                });
-
-            modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Estado", b =>
-                {
-                    b.HasOne("Pilar_Facilitis.Domain.Entities.Pais", "Pais")
-                        .WithMany()
-                        .HasForeignKey("PaisId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.PontoAtendimentos", b =>

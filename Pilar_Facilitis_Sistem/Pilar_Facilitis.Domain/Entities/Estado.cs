@@ -12,10 +12,6 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public string Nome { get; set; }
 
-        public string Sigla { get; set; }
-
-        public int PaisId { get; set; }
-
-        public Pais Pais { get; set; }
+        public string Sigla { get; set; }        
     }
 }

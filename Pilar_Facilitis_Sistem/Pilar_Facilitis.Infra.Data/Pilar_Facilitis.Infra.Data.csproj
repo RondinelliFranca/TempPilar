@@ -11,17 +11,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Contexts\Base\IContexto.cs" />
     <Compile Remove="Contexts\EntityConfig\EnderecoFuncionarioConfiguration.cs" />
     <Compile Remove="Contexts\EntityConfig\EnderecoPontoAtendConfiguration.cs" />
     <Compile Remove="Migrations\20190409184501_InitialCreate.cs" />
     <Compile Remove="Migrations\20190409185913_InitialCreate.cs" />
     <Compile Remove="Migrations\20190409205836_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190409210544_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190410015017_InitialCreate.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
   <ItemGroup>

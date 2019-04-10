@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Pilar_Facilitis.Infra.Data.Contexts.Base
 {
-    public interface IContexto : IDisposable
+    public interface IContexto
     {
         DbSet<TEntidade> Tabela<TEntidade>() where TEntidade : class;
 
