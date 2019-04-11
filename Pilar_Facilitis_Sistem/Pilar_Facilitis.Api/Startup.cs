@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pilar_Facilitis.Api.Configuration;
 using Swashbuckle.AspNetCore.Swagger;
 //using Microsoft.EntityFrameworkCore;
 using Pilar_Facilitis.Infra.Data.Contexts.Base;
+using Pilar_Facilitis.Services.Configuracoes;
 
 namespace Pilar_Facilitis.Api
 {
@@ -28,6 +31,14 @@ namespace Pilar_Facilitis.Api
         {
             services.AddDbContext<ContextPilarFacilitis>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("PilarFacilitisConnectionString")));
+
+            services.AdicionarEscopos();
+
+            Mapper.Initialize(x =>
+            {
+                services.AddSingleton(Mapeador.RegistrarMapeamentos().CreateMapper());
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSwaggerGen(options =>

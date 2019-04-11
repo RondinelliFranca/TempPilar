@@ -38,6 +38,10 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
             builder.Property(c => c.Email)
                 .IsRequired()
                 .HasMaxLength(60);
+
+            builder.HasOne(x => x.Endereco)
+                .WithOne()
+                .HasForeignKey<Endereco>(e => e.ClienteId);
         }
     }
 }

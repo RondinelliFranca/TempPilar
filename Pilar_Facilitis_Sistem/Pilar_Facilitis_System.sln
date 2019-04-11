@@ -13,21 +13,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Api", "Pila
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{B4B68244-647C-4E9A-9718-AD8D1BE604A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modelos", "Modelos", "{3BCEAFE9-94E1-4997-8453-97A7BEC8F560}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{803905F8-AC18-42FD-A6ED-5E104A44D23E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{C7962524-EAC0-411E-AFEE-E7CFF5E45DE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Services", "Pilar_Facilitis.Services\Pilar_Facilitis.Services.csproj", "{614242B4-CECB-4C98-A00B-4CC8459A19C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Services", "Pilar_Facilitis.Services\Pilar_Facilitis.Services.csproj", "{614242B4-CECB-4C98-A00B-4CC8459A19C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{AB62FED9-69F3-4B55-A144-591A99946162}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Domain", "Pilar_Facilitis.Domain\Pilar_Facilitis.Domain.csproj", "{645619B8-2E88-4D73-9D37-8CBD276D0933}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Domain", "Pilar_Facilitis.Domain\Pilar_Facilitis.Domain.csproj", "{645619B8-2E88-4D73-9D37-8CBD276D0933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Infra.Data", "Pilar_Facilitis.Infra.Data\Pilar_Facilitis.Infra.Data.csproj", "{C62117DE-36F7-44D7-AE3E-E817D78B9BF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Infra.Data", "Pilar_Facilitis.Infra.Data\Pilar_Facilitis.Infra.Data.csproj", "{C62117DE-36F7-44D7-AE3E-E817D78B9BF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Infra.CrossCutting", "Pilar_Facilitis.Infra.CrossCutting\Pilar_Facilitis.Infra.CrossCutting.csproj", "{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Infra.CrossCutting", "Pilar_Facilitis.Infra.CrossCutting\Pilar_Facilitis.Infra.CrossCutting.csproj", "{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,7 +59,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{97BCB427-C5EC-41F4-A3AE-11DC11F73BB9} = {0E4918FD-932A-4129-9C2F-FB450AEFDB0B}
-		{3BCEAFE9-94E1-4997-8453-97A7BEC8F560} = {28C012B5-5167-4B2D-BF61-7A0E8A98A47F}
 		{C7962524-EAC0-411E-AFEE-E7CFF5E45DE6} = {B4B68244-647C-4E9A-9718-AD8D1BE604A2}
 		{614242B4-CECB-4C98-A00B-4CC8459A19C4} = {2D9CA1CA-8B62-403B-8832-58B3F14704B3}
 		{AB62FED9-69F3-4B55-A144-591A99946162} = {B4B68244-647C-4E9A-9718-AD8D1BE604A2}

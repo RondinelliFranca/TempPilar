@@ -13,7 +13,7 @@ namespace Pilar_Facilitis.Domain.Entities
             this.ClienteId = Guid.NewGuid();
         }
 
-        public Guid ClienteId { get; set; }        
+        public Guid? ClienteId { get; set; }        
 
         public string RazaoSocial { get; set; }
 
@@ -29,7 +29,9 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public string Email { get; set; }
 
-        public virtual ICollection<PontoAtendimentos> PontosAtendimento { get; set; }
+        public virtual Endereco Endereco { get; set; }
+
+        //public virtual ICollection<PontoAtendimentos> PontosAtendimento { get; set; }
 
         
     }

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pilar_Facilitis.Domain.Entities
 {
@@ -11,7 +10,7 @@ namespace Pilar_Facilitis.Domain.Entities
             EnderecoId = Guid.NewGuid();
         }
 
-        public Guid EnderecoId { get; set; }
+        public Guid? EnderecoId { get; set; }
 
         public string RuaAv { get; set; }
 
@@ -25,6 +24,7 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public int Cidade { get; set; }
 
+        //[ForeignKey("ClienteId")]
         public virtual Cliente Cliente { get; set; }
         public Guid? ClienteId { get; set; }
         public virtual Funcionario Funcionario { get; set; }

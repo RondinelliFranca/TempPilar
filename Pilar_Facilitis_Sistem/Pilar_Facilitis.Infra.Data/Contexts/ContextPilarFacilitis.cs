@@ -5,7 +5,7 @@ using Pilar_Facilitis.Infra.Data.Contexts.EntityConfig;
 
 namespace Pilar_Facilitis.Infra.Data.Contexts.Base
 {
-    public class ContextPilarFacilitis : DbContext
+    public class ContextPilarFacilitis : Base.Contexto
     {
         public ContextPilarFacilitis(DbContextOptions<ContextPilarFacilitis> options)
         : base(options)

@@ -9,13 +9,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.*" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Pilar_Facilitis.Infra.Data\Pilar_Facilitis.Infra.Data.csproj" />
+    <ProjectReference Include="..\Pilar_Facilitis.Services\Pilar_Facilitis.Services.csproj" />
   </ItemGroup>
 
 </Project>
