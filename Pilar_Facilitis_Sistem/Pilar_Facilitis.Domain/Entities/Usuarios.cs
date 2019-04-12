@@ -9,7 +9,7 @@ namespace Pilar_Facilitis.Domain.Entities
 {
     public class Usuarios
     {
-        [Key]
+        //[Key]
         public string Id { get; set; }
 
         public string Nome { get; set; }

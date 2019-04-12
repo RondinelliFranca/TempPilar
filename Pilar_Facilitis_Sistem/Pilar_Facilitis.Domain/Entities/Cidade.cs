@@ -5,7 +5,7 @@ namespace Pilar_Facilitis.Domain.Entities
 {    
     public class Cidade
     {
-        [Key]
+        //[Key]
         public int Id { get; set; }
 
         public int IdEstado { get; set; }

@@ -16,6 +16,6 @@ namespace Pilar_Facilitis.Api.ViewModel
 
         public int Estado { get; set; }
 
-        public int Cidade { get; set; }
+        public int IdCidade { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Pilar_Facilitis.Domain.Entities
         {
             Id = Guid.NewGuid();
         }
-        [Key]
+        //[Key]
         public Guid? Id { get; set; }
         public Guid? IdCliente { get; set; }
         public Guid? IdFuncionario { get; set; }
@@ -31,16 +31,16 @@ namespace Pilar_Facilitis.Domain.Entities
         //[ForeignKey("Id")]
         //public Cidade Cidade { get; set; }
 
-        [ForeignKey("Id")]
-        public virtual Cliente Cliente { get; set; }
-        
-        [ForeignKey("Id")]        
-        public virtual Funcionario Funcionario { get; set; }
-        
-        [ForeignKey("Id")]
-        public virtual PontoAtendimentos PontoAtendimento { get; set; }
-        
-        
+        //[ForeignKey("Id")]
+        //public virtual Cliente Cliente { get; set; }
+
+        //[ForeignKey("Id")]
+        //public virtual Funcionario Funcionario { get; set; }
+
+        //[ForeignKey("Id")]
+        //public virtual PontoAtendimentos PontoAtendimento { get; set; }
+
+
 
     }
 }

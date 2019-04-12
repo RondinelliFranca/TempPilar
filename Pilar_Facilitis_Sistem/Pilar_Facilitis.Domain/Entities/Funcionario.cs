@@ -10,7 +10,7 @@ namespace Pilar_Facilitis.Domain.Entities
             this.Id = Guid.NewGuid();
         }
 
-        [Key]
+        //[Key]
         public Guid Id { get; set; }        
 
         public string Nome { get; set; }
