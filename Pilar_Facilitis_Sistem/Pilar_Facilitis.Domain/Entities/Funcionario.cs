@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pilar_Facilitis.Domain.Entities
 {
@@ -6,10 +7,11 @@ namespace Pilar_Facilitis.Domain.Entities
     {
         public Funcionario()
         {
-            this.FuncId = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
-        public Guid FuncId { get; set; }        
+        [Key]
+        public Guid Id { get; set; }        
 
         public string Nome { get; set; }
 
@@ -25,6 +27,8 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public string Escolaridade { get; set; }
 
-        public int Qtd_Dependentes { get; set; }        
+        public int Qtd_Dependentes { get; set; }
+
+        public virtual Endereco Endereco { get; set; }
     }
 }

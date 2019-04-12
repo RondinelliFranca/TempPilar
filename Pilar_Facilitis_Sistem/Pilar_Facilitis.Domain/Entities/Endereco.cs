@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pilar_Facilitis.Domain.Entities
@@ -7,30 +8,38 @@ namespace Pilar_Facilitis.Domain.Entities
     {
         public Endereco()
         {
-            EnderecoId = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
-
-        public Guid? EnderecoId { get; set; }
+        [Key]
+        public Guid? Id { get; set; }
+        public Guid? IdCliente { get; set; }
+        public Guid? IdFuncionario { get; set; }
+        public Guid? IdPontoAtendimento { get; set; }
 
         public string RuaAv { get; set; }
 
         public int Numero { get; set; }
 
         public string Bairro { get; set; }
-
+        public string Complemento { get; set; }
         public int Pais { get; set; }
 
         public int Estado { get; set; }
 
-        public int Cidade { get; set; }
+        public int IdCidade { get; set; }
 
-        //[ForeignKey("ClienteId")]
+        //[ForeignKey("Id")]
+        //public Cidade Cidade { get; set; }
+
+        [ForeignKey("Id")]
         public virtual Cliente Cliente { get; set; }
-        public Guid? ClienteId { get; set; }
+        
+        [ForeignKey("Id")]        
         public virtual Funcionario Funcionario { get; set; }
-        public Guid? FuncionarioId { get; set; }
+        
+        [ForeignKey("Id")]
         public virtual PontoAtendimentos PontoAtendimento { get; set; }
-        public Guid? PontoAtendimentoId { get; set; }
+        
         
 
     }

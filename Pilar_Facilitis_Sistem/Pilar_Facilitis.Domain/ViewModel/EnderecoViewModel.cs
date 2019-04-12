@@ -4,7 +4,7 @@ namespace Pilar_Facilitis.Api.ViewModel
 {
     public class EnderecoViewModel
     {
-        public Guid EnderecoId { get; set; }
+        public Guid? EnderecoId { get; set; }
 
         public string RuaAv { get; set; }
 

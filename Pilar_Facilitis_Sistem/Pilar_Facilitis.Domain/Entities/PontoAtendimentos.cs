@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,11 @@ namespace Pilar_Facilitis.Domain.Entities
     {
         public PontoAtendimentos()
         {
-            this.PontoAtendId = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
-        public Guid PontoAtendId { get; set; }
+        [Key]
+        public Guid? Id { get; set; }
 
         public string Nome { get; set; }
 
@@ -22,9 +24,7 @@ namespace Pilar_Facilitis.Domain.Entities
         public string NomeResponsavel { get; set; }
 
         public string Email { get; set; }
-
-        public Guid ClienteId { get; set; }
-
-        public virtual Cliente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
+        public virtual Endereco Endereco { get; set; }
     }
 }

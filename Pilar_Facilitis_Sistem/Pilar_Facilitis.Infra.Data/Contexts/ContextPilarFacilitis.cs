@@ -18,7 +18,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.Base
         public DbSet<Equipamentos> Equipamentos{ get; set; }
         public DbSet<Estado> Estados{ get; set; }
         public DbSet<Funcionario> Funcionarios{ get; set; }
-        public DbSet<Pais> Paises{ get; set; }
+        //public DbSet<Pais> Paises{ get; set; }
         public DbSet<PontoAtendimentos> PontosAtendimento { get; set; }
         public DbSet<Servicos> Servicos{ get; set; }
         public DbSet<Usuarios> Usuarios{ get; set; }
@@ -31,7 +31,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.Base
             builder.ApplyConfiguration(new EquipamentosConfiguration());
             builder.ApplyConfiguration(new EstadoConfiguration());
             builder.ApplyConfiguration(new FuncionarioPilarConfiguration());
-            builder.ApplyConfiguration(new PaisConfiguration());
+            //builder.ApplyConfiguration(new PaisConfiguration());
             builder.ApplyConfiguration(new PontoAtendConfiguration());
             builder.ApplyConfiguration(new ServicosConfiguration());
             builder.ApplyConfiguration(new UsuariosConfiguration());

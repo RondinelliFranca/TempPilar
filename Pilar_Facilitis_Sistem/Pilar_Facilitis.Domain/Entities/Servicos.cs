@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,11 @@ namespace Pilar_Facilitis.Domain.Entities
     {
         public Servicos()
         {
-            this.ServicosId = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
-        public Guid ServicosId { get; set; }
+        [Key]
+        public Guid Id { get; set; }
 
         public string Desc_Servicos { get; set; }
 

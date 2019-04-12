@@ -8,7 +8,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Estado> builder)
         {
-            builder.HasKey(e => e.EstadoId);
+            builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Nome)
                 .IsRequired()
@@ -16,9 +16,9 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.Property(e => e.Sigla);
 
-            //HasRequired(e => e.Pais)
-            //    .WithMany()
-            //    .HasForeignKey(e => e.PaisId);
+            builder.HasMany(x => x.Cidades)
+                .WithOne(s => s.Estado)
+                .HasForeignKey(c => c.IdEstado);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Pilar_Facilitis.Domain.ViewModel
 {
     public class ClienteViewModel
     {
-        public Guid ClienteId { get; set; }
+        public Guid? ClienteId { get; set; }
 
         public string RazaoSocial { get; set; }
 

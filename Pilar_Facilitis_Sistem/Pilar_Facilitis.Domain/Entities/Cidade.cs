@@ -1,11 +1,21 @@
-﻿namespace Pilar_Facilitis.Domain.Entities
-{
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace Pilar_Facilitis.Domain.Entities
+{    
     public class Cidade
     {
-        public int CidadeId { get; set; }
+        [Key]
+        public int Id { get; set; }
+
+        public int IdEstado { get; set; }
 
         public string Nome { get; set; }
 
-        public string Sigla { get; set; }        
+        public string Sigla { get; set; }
+
+        public virtual Estado Estado { get; set; }
+
+        //public virtual ICollection<Endereco> Enderecos { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace Pilar_Facilitis.Services.Service
             {
                 var cc = _mapeador.Map<Cliente>(cliente);
                 //cc.Endereco.Cliente = cc;
-                //cc.Endereco.ClienteId = cc.ClienteId;
+                //cc.Endereco.Id = cc.Id;
                 var clienteBd = await _clienteRepository.InsereAsync(cc);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
                 return clienteBd;

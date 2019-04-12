@@ -8,7 +8,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Usuarios> builder)
         {
-            builder.HasKey(c => c.UsuarioId);
+            builder.HasKey(c => c.Id);
 
             builder.Property(e => e.Nome)
                 .IsRequired()

@@ -10,13 +10,17 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
         {
 
             builder.ToTable("Cidade");
-            builder.HasKey(e => e.CidadeId);
+            builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Nome)
                     .IsRequired()
                     .HasMaxLength(100);
 
-            builder.Property(e => e.Sigla).IsRequired();                    
+            builder.Property(e => e.Sigla).IsRequired();
+
+            builder.HasOne(x => x.Estado)
+                .WithMany(c => c.Cidades)
+                .HasForeignKey(e => e.IdEstado);
         }
     }
 }

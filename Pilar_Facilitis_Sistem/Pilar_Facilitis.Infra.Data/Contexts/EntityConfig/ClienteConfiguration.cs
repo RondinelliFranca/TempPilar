@@ -9,7 +9,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
             builder.ToTable("Cliente");
-            builder.HasKey(e => e.ClienteId);
+            builder.HasKey(e => e.Id);
 
             builder.Property(c => c.NomeFantasia)
                 .IsRequired()
@@ -21,7 +21,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.Property(c => c.CNPJ)
                 .IsRequired()
-                .HasMaxLength(14);
+                .HasMaxLength(20);
 
             builder.Property(c => c.RazaoSocial)
                 .IsRequired()
@@ -29,11 +29,11 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.Property(c => c.Celular)
                 .IsRequired()
-                .HasMaxLength(9);
+                .HasMaxLength(20);
 
             builder.Property(c => c.Telefone)
                 .IsRequired()
-                .HasMaxLength(8);
+                .HasMaxLength(20);
 
             builder.Property(c => c.Email)
                 .IsRequired()
@@ -41,7 +41,10 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.HasOne(x => x.Endereco)
                 .WithOne()
-                .HasForeignKey<Endereco>(e => e.ClienteId);
+                .HasForeignKey<Endereco>(e => e.IdCliente);
+
+            builder.HasMany(c => c.PontosAtendimento)
+                .WithOne(e => e.Cliente);
         }
     }
 }

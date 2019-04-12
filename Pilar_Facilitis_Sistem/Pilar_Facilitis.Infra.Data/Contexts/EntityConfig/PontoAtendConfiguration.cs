@@ -8,7 +8,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
     {
         public void Configure(EntityTypeBuilder<PontoAtendimentos> builder)
         {
-            builder.HasKey(c => c.PontoAtendId);
+            builder.HasKey(c => c.Id);
 
             builder.Property(p => p.Nome)
                 .IsRequired()
@@ -25,9 +25,12 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
                 .IsRequired()
                 .HasMaxLength(60);
 
-            //HasRequired(p => p.Cliente)
-            //    .WithMany()
-            //    .HasForeignKey(p => p.ClienteId);
+            builder.HasOne(x => x.Endereco)
+                .WithOne()
+                .HasForeignKey<Endereco>(e => e.IdFuncionario);
+
+            //builder.HasOne(c => c.Cliente)
+            //    .WithMany(e => e.PontosAtendimento);
         }
     }
 }

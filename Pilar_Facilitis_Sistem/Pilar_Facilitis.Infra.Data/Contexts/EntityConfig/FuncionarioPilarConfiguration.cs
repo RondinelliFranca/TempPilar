@@ -8,7 +8,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
     {      
         public void Configure(EntityTypeBuilder<Funcionario> builder)
         {
-            builder.HasKey(c => c.FuncId);
+            builder.HasKey(c => c.Id);
 
             builder.Property(c => c.CPF)
                 .IsRequired()
@@ -27,18 +27,22 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.Property(c => c.RG)
                 .IsRequired()
-                .HasMaxLength(8);
+                .HasMaxLength(20);
 
             builder.Property(c => c.Telefone_Cel)
                 .IsRequired()
-                .HasMaxLength(9);
+                .HasMaxLength(20);
 
             builder.Property(c => c.Telefone_Fixo)
                 .IsRequired()
-                .HasMaxLength(8);
+                .HasMaxLength(20);
 
             builder.Property(c => c.Qtd_Dependentes)
                 .IsRequired();
+
+            builder.HasOne(x => x.Endereco)
+                .WithOne()
+                .HasForeignKey<Endereco>(e => e.IdFuncionario);
         }
     }
 }
