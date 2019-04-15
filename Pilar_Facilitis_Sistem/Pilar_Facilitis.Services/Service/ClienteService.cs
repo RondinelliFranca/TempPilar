@@ -6,7 +6,10 @@ using Pilar_Facilitis.Domain.Entities;
 using Pilar_Facilitis.Domain.Interfaces.Contexto;
 using Pilar_Facilitis.Domain.Interfaces.Repository;
 using Pilar_Facilitis.Domain.Interfaces.Service;
+using Pilar_Facilitis.Domain.Modelos;
+using Pilar_Facilitis.Domain.Validacoes;
 using Pilar_Facilitis.Domain.ViewModel;
+using Pilar_Facilitis.Util.Mensagens;
 
 namespace Pilar_Facilitis.Services.Service
 {
@@ -21,35 +24,62 @@ namespace Pilar_Facilitis.Services.Service
             _unidadeTrabalho = unidadeTrabalho;
             _mapeador = mappeer;
         }
-        public async Task<Cliente> Adcionar(ClienteViewModel cliente)
+        public async Task<Resposta> Adcionar(ClienteViewModel clienteViewModel)
         {
             try
             {
-                var cc = _mapeador.Map<Cliente>(cliente);
-                //cc.Endereco.Cliente = cc;
-                //cc.Endereco.Id = cc.Id;
-                var clienteBd = await _clienteRepository.InsereAsync(cc);
+                var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
+                var resposta = ValidarCliente(clienteModel);
+
+                if (!resposta.Sucesso) return resposta;                
+                            
+                var clienteBd = await _clienteRepository.InsereAsync(clienteModel);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
-                return clienteBd;
+
+                return resposta.Retorno(_mapeador.Map<ClienteViewModel>(clienteBd));                
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Resposta(e);
             }                        
         }
 
-        public Task<Cliente> Atualizar(Cliente cliente)
+        public async Task<Resposta> Atualizar(ClienteViewModel clienteViewModel)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
+                var resposta = ValidarCliente(clienteModel);
+
+                if (!resposta.Sucesso) return resposta;
+
+                await _clienteRepository.Edita(clienteModel); //atualizar
+                await _unidadeTrabalho.SalvaAlteracoesAsync();
+
+                return resposta;
+            }
+            catch (Exception e)
+            {
+                return new Resposta(e);
+            }
         }
 
-        public Task<Cliente> ObterPorID(Guid id)
+        public async Task<Resposta> ObterPorID(Guid id)
         {
-            throw new NotImplementedException();
+            var resposta = new Resposta();
+
+            var cliente = await _clienteRepository.BuscaAsync(id);
+
+            if (cliente != null)
+            {
+                return resposta.Retorno(_mapeador.Map<ClienteViewModel>(cliente));
+            }
+
+             resposta.AdicionaErro(Mensagens.NaoEncontrado, Mensagens.NaoLocalizado);
+             return resposta;
         }
 
-        public Task<IEnumerable<Cliente>> ObterTodos()
+        public Task<IEnumerable<Resposta>> ObterTodos()
         {
             throw new NotImplementedException();
         }
@@ -57,6 +87,20 @@ namespace Pilar_Facilitis.Services.Service
         public void Remover(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        private Resposta ValidarCliente(Cliente cliente)
+        {
+            var resposta = new Resposta();
+            
+            var validacao = new ClienteValidacao().Validate(cliente);
+            if (validacao.IsValid) return resposta;
+            foreach (var erro in validacao.Errors)
+            {
+                resposta.AdicionaErro(erro.PropertyName, erro.ErrorMessage);
+            }
+
+            return resposta;            
         }
     }
 }

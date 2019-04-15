@@ -10,7 +10,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="6.2.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pilar_Facilitis.Util\Pilar_Facilitis.Util.csproj" />
   </ItemGroup>
 
 </Project>

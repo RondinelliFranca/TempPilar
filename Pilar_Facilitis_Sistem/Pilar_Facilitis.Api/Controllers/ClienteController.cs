@@ -19,9 +19,9 @@ namespace Pilar_Facilitis.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<Cliente> Criar([FromBody] ClienteViewModel cliente)
+        public async Task<IActionResult> Criar([FromBody] ClienteViewModel cliente)
         {
-            return await _service.Adcionar(cliente);
+            return Ok(await _service.Adcionar(cliente));
         }
     }
 }
