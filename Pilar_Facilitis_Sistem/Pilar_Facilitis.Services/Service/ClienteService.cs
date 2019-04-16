@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using FluentValidation.TestHelper;
 using Pilar_Facilitis.Domain.Entities;
 using Pilar_Facilitis.Domain.Interfaces.Contexto;
 using Pilar_Facilitis.Domain.Interfaces.Repository;
@@ -31,17 +32,17 @@ namespace Pilar_Facilitis.Services.Service
                 var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
                 var resposta = ValidarCliente(clienteModel);
 
-                if (!resposta.Sucesso) return resposta;                
-                            
+                if (!resposta.Sucesso) return resposta;
+
                 var clienteBd = await _clienteRepository.InsereAsync(clienteModel);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
 
-                return resposta.Retorno(_mapeador.Map<ClienteViewModel>(clienteBd));                
+                return resposta.Retorno(_mapeador.Map<ClienteViewModel>(clienteBd));
             }
             catch (Exception e)
             {
                 return new Resposta(e);
-            }                        
+            }
         }
 
         public async Task<Resposta> Atualizar(ClienteViewModel clienteViewModel)
@@ -53,7 +54,7 @@ namespace Pilar_Facilitis.Services.Service
 
                 if (!resposta.Sucesso) return resposta;
 
-                await _clienteRepository.Edita(clienteModel); //atualizar
+                await _clienteRepository.Edita(clienteModel); 
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
 
                 return resposta;
@@ -66,33 +67,69 @@ namespace Pilar_Facilitis.Services.Service
 
         public async Task<Resposta> ObterPorID(Guid id)
         {
-            var resposta = new Resposta();
-
-            var cliente = await _clienteRepository.BuscaAsync(id);
-
-            if (cliente != null)
+            try
             {
-                return resposta.Retorno(_mapeador.Map<ClienteViewModel>(cliente));
+                var resposta = new Resposta();
+
+                var cliente = await _clienteRepository.BuscaAsync(id);
+
+                if (cliente != null)
+                {
+                    return resposta.Retorno(_mapeador.Map<ClienteViewModel>(cliente));
+                }
+
+                resposta.AdicionaErro(Mensagens.NaoEncontrado, Mensagens.NaoLocalizado);
+                return resposta;
+            }
+            catch (Exception e)
+            {
+                return new Resposta(e);
             }
 
-             resposta.AdicionaErro(Mensagens.NaoEncontrado, Mensagens.NaoLocalizado);
-             return resposta;
         }
 
-        public Task<IEnumerable<Resposta>> ObterTodos()
+        public async Task<Resposta> ObterTodos()
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                var resposta = new Resposta();                
+                return resposta.Retorno(
+                    _mapeador.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(
+                        await _clienteRepository.BuscaTodosAsync()));
+            }
+            catch (Exception e)
+            {
+                return new Resposta(e);
+            }
 
-        public void Remover(Guid id)
+        }        
+
+        public async Task<Resposta> Remover(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var resposta = new Resposta();
+                var cliente = await _clienteRepository.BuscaAsync(id);
+                if (cliente == null)
+                {
+                    resposta.AdicionaErro("Inconsitência!", "Cliente não foi localizado!");
+                    return resposta;
+                }
+
+                _clienteRepository.Exclui(cliente);
+                await _unidadeTrabalho.SalvaAlteracoesAsync();
+                return resposta;
+            }
+            catch (Exception e)
+            {
+                return new Resposta(e);
+            }
         }
 
         private Resposta ValidarCliente(Cliente cliente)
         {
             var resposta = new Resposta();
-            
+
             var validacao = new ClienteValidacao().Validate(cliente);
             if (validacao.IsValid) return resposta;
             foreach (var erro in validacao.Errors)
@@ -100,7 +137,7 @@ namespace Pilar_Facilitis.Services.Service
                 resposta.AdicionaErro(erro.PropertyName, erro.ErrorMessage);
             }
 
-            return resposta;            
+            return resposta;
         }
     }
 }

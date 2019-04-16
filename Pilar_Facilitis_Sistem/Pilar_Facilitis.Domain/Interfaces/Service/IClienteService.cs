@@ -13,7 +13,7 @@ namespace Pilar_Facilitis.Domain.Interfaces.Service
         Task<Resposta> Adcionar(ClienteViewModel clienteViewModel);
         Task<Resposta> Atualizar(ClienteViewModel cliente);
         Task<Resposta> ObterPorID(Guid id);        
-        Task<IEnumerable<Resposta>> ObterTodos();
-        void Remover(Guid id);
+        Task<Resposta> ObterTodos();
+        Task<Resposta> Remover(Guid id);
     }
 }

@@ -9,7 +9,7 @@ namespace Pilar_Facilitis.Infra.Data.Repository
 {
     public class Repository<TEntidade> where TEntidade : class
     {
-        protected IContexto Contexto { get; }
+        protected IContexto Contexto { get; set; }
 
         protected DbSet<TEntidade> Tabela { get; }
 
@@ -19,7 +19,7 @@ namespace Pilar_Facilitis.Infra.Data.Repository
             Tabela = contexto.Tabela<TEntidade>();
         }
 
-        public async virtual Task<IEnumerable<TEntidade>> BuscaTodosAsync()
+        public virtual async Task<IEnumerable<TEntidade>> BuscaTodosAsync()
         {
             return Tabela;
         }
@@ -31,7 +31,7 @@ namespace Pilar_Facilitis.Infra.Data.Repository
 
         public async virtual Task Edita(TEntidade entidade)
         {
-            Contexto.MarcaModificado(entidade, Tabela);
+            Contexto.MarcaModificado(entidade, Tabela);            
         }
 
         public async Task<TEntidade> InsereAsync(TEntidade entidade)

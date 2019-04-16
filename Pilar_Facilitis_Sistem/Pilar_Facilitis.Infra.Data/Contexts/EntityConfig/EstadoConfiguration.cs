@@ -10,6 +10,9 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
         {
             builder.HasKey(e => e.Id);
 
+            builder.Property(c => c.Id)
+                .ValueGeneratedNever();
+
             builder.Property(e => e.Nome)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -18,7 +21,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.HasMany(x => x.Cidades)
                 .WithOne(s => s.Estado)
-                .HasForeignKey(c => c.IdEstado);
+                .HasForeignKey(c => c.EstadoId);
         }
     }
 }

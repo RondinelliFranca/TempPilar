@@ -4,13 +4,21 @@ namespace Pilar_Facilitis.Api.ViewModel
 {
     public class EnderecoViewModel
     {
-        public Guid? EnderecoId { get; set; }
+        public Guid? Id { get; set; }
+
+        public Guid? IdCliente { get; set; }
+
+        public Guid? IdFuncionario { get; set; }
+
+        public Guid? IdPontoAtendimento { get; set; }
 
         public string RuaAv { get; set; }
 
         public int Numero { get; set; }
 
         public string Bairro { get; set; }
+
+        public string Complemento { get; set; }
 
         public int Pais { get; set; }
 
