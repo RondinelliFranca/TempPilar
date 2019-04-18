@@ -24,8 +24,11 @@ namespace Pilar_Facilitis.Api.Configuration
             
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IEstadoRepository, EstadoRepository>();
+            services.AddScoped<ICidadeRepository, CidadeRepository>();
 
             services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<IEnderecoService, EnderecoService>();
 
 
         }
