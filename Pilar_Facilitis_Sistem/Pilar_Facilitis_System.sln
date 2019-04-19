@@ -5,15 +5,13 @@ VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{0E4918FD-932A-4129-9C2F-FB450AEFDB0B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 -Service", "2 -Service", "{2D9CA1CA-8B62-403B-8832-58B3F14704B3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 -Service", "1 -Service", "{2D9CA1CA-8B62-403B-8832-58B3F14704B3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{28C012B5-5167-4B2D-BF61-7A0E8A98A47F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{28C012B5-5167-4B2D-BF61-7A0E8A98A47F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Api", "Pilar_Facilitis.Api\Pilar_Facilitis.Api.csproj", "{97BCB427-C5EC-41F4-A3AE-11DC11F73BB9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{B4B68244-647C-4E9A-9718-AD8D1BE604A2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{803905F8-AC18-42FD-A6ED-5E104A44D23E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infra", "3 - Infra", "{B4B68244-647C-4E9A-9718-AD8D1BE604A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{C7962524-EAC0-411E-AFEE-E7CFF5E45DE6}"
 EndProject
@@ -27,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Infra.Data"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Infra.CrossCutting", "Pilar_Facilitis.Infra.CrossCutting\Pilar_Facilitis.Infra.CrossCutting.csproj", "{CB4AE6DC-218B-44D0-AFF7-BC9BF40096C9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Util", "5 - Util", "{B366F0D8-1B7D-4046-B969-095354D524F1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Util", "4 - Util", "{B366F0D8-1B7D-4046-B969-095354D524F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pilar_Facilitis.Util", "Pilar_Facilitis.Util\Pilar_Facilitis.Util.csproj", "{FE8705D0-6E60-4C8A-95B5-3758463021A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pilar_Facilitis.Util", "Pilar_Facilitis.Util\Pilar_Facilitis.Util.csproj", "{FE8705D0-6E60-4C8A-95B5-3758463021A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
