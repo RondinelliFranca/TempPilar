@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using FluentValidation.TestHelper;
 using Pilar_Facilitis.Domain.Entities;
 using Pilar_Facilitis.Domain.Interfaces.Contexto;
 using Pilar_Facilitis.Domain.Interfaces.Repository;
@@ -14,30 +13,36 @@ using Pilar_Facilitis.Util.Mensagens;
 
 namespace Pilar_Facilitis.Services.Service
 {
-    public class ClienteService : IClienteService
+    public class FuncionarioService : IFuncionarioService
     {
-        private readonly IClienteRepository _clienteRepository;
+        private readonly IFuncionarioRepository _funcionarioRepository;
         private readonly IUnidadeTrabalho _unidadeTrabalho;
         private readonly IMapper _mapeador;
-        public ClienteService(IClienteRepository clienteRepository, IUnidadeTrabalho unidadeTrabalho, IMapper mappeer)
+        public FuncionarioService(IFuncionarioRepository funcionarioRepository, IUnidadeTrabalho unidadeTrabalho, IMapper mapper)
         {
-            _clienteRepository = clienteRepository;
+            _funcionarioRepository = funcionarioRepository;
             _unidadeTrabalho = unidadeTrabalho;
-            _mapeador = mappeer;
+            _mapeador = mapper;
         }
-        public async Task<Resposta> Adcionar(ClienteViewModel clienteViewModel)
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
+        public async Task<Resposta> Adcionar(FuncionarioViewModel funcionarioViewModel)
         {
             try
             {
-                var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
-                var resposta = ValidarCliente(clienteModel);
+                var funcionarioModel = _mapeador.Map<Funcionario>(funcionarioViewModel);
+                var resposta = Validar(funcionarioModel);
 
                 if (!resposta.Sucesso) return resposta;
 
-                var clienteBd = await _clienteRepository.InsereAsync(clienteModel);
+                var funcionarioDb = await _funcionarioRepository.InsereAsync(funcionarioModel);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
 
-                return resposta.Retorno(_mapeador.Map<ClienteViewModel>(clienteBd));
+                return resposta.Retorno(_mapeador.Map<FuncionarioViewModel>(funcionarioDb));
             }
             catch (Exception e)
             {
@@ -45,16 +50,16 @@ namespace Pilar_Facilitis.Services.Service
             }
         }
 
-        public async Task<Resposta> Atualizar(ClienteViewModel clienteViewModel)
+        public async Task<Resposta> Atualizar(FuncionarioViewModel funcionarioViewModel)
         {
             try
             {
-                var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
-                var resposta = ValidarCliente(clienteModel);
+                var funcionarioModel = _mapeador.Map<Funcionario>(funcionarioViewModel);
+                var resposta = Validar(funcionarioModel);
 
                 if (!resposta.Sucesso) return resposta;
 
-                await _clienteRepository.Edita(clienteModel); 
+                await _funcionarioRepository.Edita(funcionarioModel);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
 
                 return resposta;
@@ -71,11 +76,11 @@ namespace Pilar_Facilitis.Services.Service
             {
                 var resposta = new Resposta();
 
-                var cliente = await _clienteRepository.BuscaAsync(id);
+                var funcionario = await _funcionarioRepository.BuscaAsync(id);
 
-                if (cliente != null)
+                if (funcionario != null)
                 {
-                    return resposta.Retorno(_mapeador.Map<ClienteViewModel>(cliente));
+                    return resposta.Retorno(_mapeador.Map<FuncionarioViewModel>(funcionario));
                 }
 
                 resposta.AdicionaErro(Mensagens.NaoEncontrado, Mensagens.NaoLocalizado);
@@ -91,10 +96,10 @@ namespace Pilar_Facilitis.Services.Service
         {
             try
             {
-                var resposta = new Resposta();                
+                var resposta = new Resposta();
                 return resposta.Retorno(
-                    _mapeador.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(
-                        await _clienteRepository.BuscaTodosAsync()));
+                    _mapeador.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(
+                        await _funcionarioRepository.BuscaTodosAsync()));
             }
             catch (Exception e)
             {
@@ -106,8 +111,8 @@ namespace Pilar_Facilitis.Services.Service
         {
             var resposta = new Resposta();
             return resposta.Retorno(
-                _mapeador.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(
-                    await _clienteRepository.BuscarPorNome(nome)));            
+                _mapeador.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(
+                    await _funcionarioRepository.BuscarPorNome(nome)));
         }
 
         public async Task<Resposta> Remover(Guid id)
@@ -115,14 +120,14 @@ namespace Pilar_Facilitis.Services.Service
             try
             {
                 var resposta = new Resposta();
-                var cliente = await _clienteRepository.BuscaAsync(id);
-                if (cliente == null)
+                var funcionario = await _funcionarioRepository.BuscaAsync(id);
+                if (funcionario == null)
                 {
-                    resposta.AdicionaErro("Inconsitência!", "Cliente não foi localizado!");
+                    resposta.AdicionaErro("Inconsitência!", "Funcionario não foi localizado!");
                     return resposta;
                 }
 
-                _clienteRepository.Exclui(cliente);
+                _funcionarioRepository.Exclui(funcionario);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
                 return resposta;
             }
@@ -132,11 +137,11 @@ namespace Pilar_Facilitis.Services.Service
             }
         }
 
-        private Resposta ValidarCliente(Cliente cliente)
+        private Resposta Validar(Funcionario funcionario)
         {
             var resposta = new Resposta();
 
-            var validacao = new ClienteValidacao().Validate(cliente);
+            var validacao = new FuncionarioValidacao().Validate(funcionario);
             if (validacao.IsValid) return resposta;
             foreach (var erro in validacao.Errors)
             {

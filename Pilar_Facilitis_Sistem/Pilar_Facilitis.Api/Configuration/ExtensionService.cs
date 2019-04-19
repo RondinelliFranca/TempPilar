@@ -21,16 +21,22 @@ namespace Pilar_Facilitis.Api.Configuration
 
             #endregion
 
-            
+            #region Repository
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             services.AddScoped<IEstadoRepository, EstadoRepository>();
             services.AddScoped<ICidadeRepository, CidadeRepository>();
 
+            #endregion
+
+            #region Service
+
             services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<IFuncionarioService, FuncionarioService>();
             services.AddScoped<IEnderecoService, EnderecoService>();
 
-
+            #endregion
         }
     }
 }

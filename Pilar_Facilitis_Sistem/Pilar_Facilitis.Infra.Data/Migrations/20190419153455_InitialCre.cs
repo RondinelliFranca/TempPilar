@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pilar_Facilitis.Infra.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCre : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -164,19 +164,19 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                         column: x => x.IdCliente,
                         principalTable: "Cliente",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Enderecos_Funcionarios_IdFuncionario",
                         column: x => x.IdFuncionario,
                         principalTable: "Funcionarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Enderecos_PontosAtendimento_IdFuncionario",
-                        column: x => x.IdFuncionario,
+                        name: "FK_Enderecos_PontosAtendimento_IdPontoAtendimento",
+                        column: x => x.IdPontoAtendimento,
                         principalTable: "PontosAtendimento",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -197,6 +197,13 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 column: "IdFuncionario",
                 unique: true,
                 filter: "[IdFuncionario] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enderecos_IdPontoAtendimento",
+                table: "Enderecos",
+                column: "IdPontoAtendimento",
+                unique: true,
+                filter: "[IdPontoAtendimento] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PontosAtendimento_ClienteId",

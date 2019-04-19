@@ -42,7 +42,7 @@ namespace Pilar_Facilitis.Infra.Data.Repository
             return Tabela.Where(x => x.Id == id).Include(e => e.Endereco).FirstOrDefault();
         }
 
-        public async void Exclui(Cliente cliente)
+        public void Exclui(Cliente cliente)
         {
             Tabela.Remove(cliente);
         }

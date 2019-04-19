@@ -1,17 +1,11 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using Pilar_Facilitis.Api.ViewModel;
 
-namespace Pilar_Facilitis.Domain.Entities
+namespace Pilar_Facilitis.Domain.ViewModel
 {
-    public class Funcionario
+    public class FuncionarioViewModel
     {
-        public Funcionario()
-        {
-            this.Id = Guid.NewGuid();
-        }
-
-        //[Key]
-        public Guid? Id { get; set; }        
+        public Guid? Id { get; set; }
 
         public string Nome { get; set; }
 
@@ -29,6 +23,6 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public int Qtd_Dependentes { get; set; }
 
-        public virtual Endereco Endereco { get; set; }
+        public virtual EnderecoViewModel Endereco { get; set; }
     }
 }

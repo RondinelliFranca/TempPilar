@@ -10,8 +10,8 @@ using Pilar_Facilitis.Infra.Data.Contexts.Base;
 namespace Pilar_Facilitis.Infra.Data.Migrations
 {
     [DbContext(typeof(ContextPilarFacilitis))]
-    [Migration("20190418003106_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190419153455_InitialCre")]
+    partial class InitialCre
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,6 +111,10 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                         .IsUnique()
                         .HasFilter("[IdFuncionario] IS NOT NULL");
 
+                    b.HasIndex("IdPontoAtendimento")
+                        .IsUnique()
+                        .HasFilter("[IdPontoAtendimento] IS NOT NULL");
+
                     b.ToTable("Enderecos");
                 });
 
@@ -153,7 +157,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Funcionario", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CPF")
@@ -268,15 +272,18 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 {
                     b.HasOne("Pilar_Facilitis.Domain.Entities.Cliente")
                         .WithOne("Endereco")
-                        .HasForeignKey("Pilar_Facilitis.Domain.Entities.Endereco", "IdCliente");
+                        .HasForeignKey("Pilar_Facilitis.Domain.Entities.Endereco", "IdCliente")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Pilar_Facilitis.Domain.Entities.Funcionario")
                         .WithOne("Endereco")
-                        .HasForeignKey("Pilar_Facilitis.Domain.Entities.Endereco", "IdFuncionario");
+                        .HasForeignKey("Pilar_Facilitis.Domain.Entities.Endereco", "IdFuncionario")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Pilar_Facilitis.Domain.Entities.PontoAtendimentos")
                         .WithOne("Endereco")
-                        .HasForeignKey("Pilar_Facilitis.Domain.Entities.Endereco", "IdFuncionario");
+                        .HasForeignKey("Pilar_Facilitis.Domain.Entities.Endereco", "IdPontoAtendimento")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.PontoAtendimentos", b =>
