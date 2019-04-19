@@ -10,11 +10,6 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
         {
             builder.ToTable("Endereco");
             builder.HasKey(e => e.Id);
-
-
-            //builder.HasOne(x => x.Cidade)
-            //    .WithMany(c => c.Enderecos)
-            //    .HasForeignKey(e => e.IdCidade);
         }
     }
 }

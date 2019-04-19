@@ -36,5 +36,15 @@ namespace Pilar_Facilitis.Infra.Data.Repository
             var entity = Tabela.Update(cliente).Entity;
             return await Tabela.Include(e => e.Endereco).FirstOrDefaultAsync();
         }
+
+        public async Task<Cliente> BuscaAsync(Guid id)
+        {
+            return Tabela.Where(x => x.Id == id).Include(e => e.Endereco).FirstOrDefault();
+        }
+
+        public async void Exclui(Cliente cliente)
+        {
+            Tabela.Remove(cliente);
+        }
     }
 }

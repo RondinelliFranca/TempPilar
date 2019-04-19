@@ -41,7 +41,8 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.HasOne(x => x.Endereco)
                 .WithOne()
-                .HasForeignKey<Endereco>(e => e.IdCliente);
+                .HasForeignKey<Endereco>(e => e.IdCliente)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(c => c.PontosAtendimento)
                 .WithOne(e => e.Cliente);

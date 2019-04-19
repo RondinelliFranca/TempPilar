@@ -27,10 +27,8 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 
             builder.HasOne(x => x.Endereco)
                 .WithOne()
-                .HasForeignKey<Endereco>(e => e.IdFuncionario);
-
-            //builder.HasOne(c => c.Cliente)
-            //    .WithMany(e => e.PontosAtendimento);
+                .HasForeignKey<Endereco>(e => e.IdFuncionario)
+                .OnDelete(DeleteBehavior.Cascade); ;
         }
     }
 }
