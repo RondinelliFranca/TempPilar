@@ -102,7 +102,15 @@ namespace Pilar_Facilitis.Services.Service
                 return new Resposta(e);
             }
 
-        }        
+        }
+
+        public async Task<Resposta> ObterPorNome(string nome)
+        {
+            var resposta = new Resposta();
+            return resposta.Retorno(
+                _mapeador.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(
+                    await _clienteRepository.BuscarPorNome(nome)));            
+        }
 
         public async Task<Resposta> Remover(Guid id)
         {

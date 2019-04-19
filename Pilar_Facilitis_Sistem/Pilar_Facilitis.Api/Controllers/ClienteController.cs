@@ -25,6 +25,12 @@ namespace Pilar_Facilitis.Api.Controllers
             return Ok(await _service.ObterTodos());
         }
 
+        [HttpGet("porNome/{nome}")]
+        public async Task<IActionResult> Buscar(string nome)
+        {
+            return Ok(await _service.ObterPorNome(nome));
+        }
+
         [HttpGet("porid/{id}")]
         public async Task<IActionResult> Buscar(Guid id)
         {
