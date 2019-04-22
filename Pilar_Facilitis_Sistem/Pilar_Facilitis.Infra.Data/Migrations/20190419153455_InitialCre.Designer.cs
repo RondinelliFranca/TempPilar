@@ -223,7 +223,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                     b.ToTable("PontosAtendimento");
                 });
 
-            modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Servicos", b =>
+            modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Servico", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -236,7 +236,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Servicos");
+                    b.ToTable("Servico");
                 });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Usuarios", b =>

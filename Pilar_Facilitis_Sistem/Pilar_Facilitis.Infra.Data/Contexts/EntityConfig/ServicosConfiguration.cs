@@ -4,9 +4,9 @@ using Pilar_Facilitis.Domain.Entities;
 
 namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 {
-    public class ServicosConfiguration : IEntityTypeConfiguration<Servicos>
+    public class ServicosConfiguration : IEntityTypeConfiguration<Servico>
     {
-        public void Configure(EntityTypeBuilder<Servicos> builder)
+        public void Configure(EntityTypeBuilder<Servico> builder)
         {
             builder.HasKey(c => c.Id);
 

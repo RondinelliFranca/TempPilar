@@ -20,7 +20,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.Base
         public DbSet<Funcionario> Funcionarios{ get; set; }
         //public DbSet<Pais> Paises{ get; set; }
         public DbSet<PontoAtendimentos> PontosAtendimento { get; set; }
-        public DbSet<Servicos> Servicos{ get; set; }
+        public DbSet<Servico> Servicos{ get; set; }
         public DbSet<Usuarios> Usuarios{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
