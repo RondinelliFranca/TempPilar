@@ -14,6 +14,8 @@ namespace Pilar_Facilitis.Domain.ViewModel
 
         public string NomeResponsavel { get; set; }
 
+        public string Telefone { get; set; }
+
         public string Email { get; set; }
         public ClienteViewModel Cliente { get; set; }
         public virtual EnderecoViewModel Endereco { get; set; }

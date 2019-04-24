@@ -10,8 +10,8 @@ using Pilar_Facilitis.Infra.Data.Contexts.Base;
 namespace Pilar_Facilitis.Infra.Data.Migrations
 {
     [DbContext(typeof(ContextPilarFacilitis))]
-    [Migration("20190419153455_InitialCre")]
-    partial class InitialCre
+    [Migration("20190424012413_chamadoADD")]
+    partial class chamadoADD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,38 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Chamado", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid?>("ClienteId");
+
+                    b.Property<DateTime>("DataSolicitacao");
+
+                    b.Property<string>("DescricaoAtendimento");
+
+                    b.Property<string>("DescricaoProblema");
+
+                    b.Property<Guid?>("PontoAtendimentoId");
+
+                    b.Property<int>("Prioridade");
+
+                    b.Property<Guid?>("ServicoId");
+
+                    b.Property<int>("Status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("PontoAtendimentoId");
+
+                    b.HasIndex("ServicoId");
+
+                    b.ToTable("Chamado");
+                });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Cidade", b =>
                 {
@@ -216,6 +248,8 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
+                    b.Property<string>("Telefone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
@@ -236,7 +270,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Servico");
+                    b.ToTable("Servicos");
                 });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Usuarios", b =>
@@ -258,6 +292,21 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Chamado", b =>
+                {
+                    b.HasOne("Pilar_Facilitis.Domain.Entities.Cliente", "Cliente")
+                        .WithMany("Chamados")
+                        .HasForeignKey("ClienteId");
+
+                    b.HasOne("Pilar_Facilitis.Domain.Entities.PontoAtendimentos", "PontoAtendimento")
+                        .WithMany("Chamados")
+                        .HasForeignKey("PontoAtendimentoId");
+
+                    b.HasOne("Pilar_Facilitis.Domain.Entities.Servico", "Servico")
+                        .WithMany("Chamados")
+                        .HasForeignKey("ServicoId");
                 });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Cidade", b =>

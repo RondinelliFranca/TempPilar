@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pilar_Facilitis.Infra.Data.Migrations
 {
-    public partial class InitialCre : Migration
+    public partial class chamadoADD : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,7 +73,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Servico",
+                name: "Servicos",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -107,6 +107,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                     Nome = table.Column<string>(maxLength: 200, nullable: false),
                     Sigla = table.Column<string>(maxLength: 20, nullable: false),
                     NomeResponsavel = table.Column<string>(nullable: false),
+                    Telefone = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 60, nullable: false),
                     ClienteId = table.Column<Guid>(nullable: true)
                 },
@@ -138,6 +139,43 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                         principalTable: "Estados",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Chamado",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    DataSolicitacao = table.Column<DateTime>(nullable: false),
+                    Prioridade = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
+                    DescricaoProblema = table.Column<string>(nullable: true),
+                    DescricaoAtendimento = table.Column<string>(nullable: true),
+                    ClienteId = table.Column<Guid>(nullable: true),
+                    PontoAtendimentoId = table.Column<Guid>(nullable: true),
+                    ServicoId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Chamado", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Chamado_Cliente_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Chamado_PontosAtendimento_PontoAtendimentoId",
+                        column: x => x.PontoAtendimentoId,
+                        principalTable: "PontosAtendimento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Chamado_Servicos_ServicoId",
+                        column: x => x.ServicoId,
+                        principalTable: "Servicos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,6 +218,21 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Chamado_ClienteId",
+                table: "Chamado",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Chamado_PontoAtendimentoId",
+                table: "Chamado",
+                column: "PontoAtendimentoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Chamado_ServicoId",
+                table: "Chamado",
+                column: "ServicoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Cidade_EstadoId",
                 table: "Cidade",
                 column: "EstadoId");
@@ -214,6 +267,9 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Chamado");
+
+            migrationBuilder.DropTable(
                 name: "Cidade");
 
             migrationBuilder.DropTable(
@@ -223,10 +279,10 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 name: "Equipamentos");
 
             migrationBuilder.DropTable(
-                name: "Servico");
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Servicos");
 
             migrationBuilder.DropTable(
                 name: "Estados");

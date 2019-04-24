@@ -17,11 +17,11 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.Base
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Equipamentos> Equipamentos{ get; set; }
         public DbSet<Estado> Estados{ get; set; }
-        public DbSet<Funcionario> Funcionarios{ get; set; }
-        //public DbSet<Pais> Paises{ get; set; }
+        public DbSet<Funcionario> Funcionarios{ get; set; }        
         public DbSet<PontoAtendimentos> PontosAtendimento { get; set; }
         public DbSet<Servico> Servicos{ get; set; }
         public DbSet<Usuarios> Usuarios{ get; set; }
+        public DbSet<Chamado> Chamados { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -35,6 +35,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.Base
             builder.ApplyConfiguration(new PontoAtendConfiguration());
             builder.ApplyConfiguration(new ServicosConfiguration());
             builder.ApplyConfiguration(new UsuariosConfiguration());
+            builder.ApplyConfiguration(new ChamadoConfiguration());
         }
 
 

@@ -14,7 +14,6 @@ namespace Pilar_Facilitis.Domain.Entities
             this.Id = Guid.NewGuid();
         }
 
-        //[Key]
         public Guid? Id { get; set; }
 
         public string Nome { get; set; }
@@ -23,8 +22,14 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public string NomeResponsavel { get; set; }
 
+        public string Telefone { get; set; }
+
         public string Email { get; set; }
+
         public Cliente Cliente { get; set; }
+
         public virtual Endereco Endereco { get; set; }
+
+        public virtual ICollection<Chamado> Chamados { get; set; }
     }
 }

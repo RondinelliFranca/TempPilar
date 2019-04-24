@@ -10,8 +10,8 @@ namespace Pilar_Facilitis.Domain.Interfaces.Service
 {
     public interface IServicoService
     {
-        Task<Resposta> Adcionar(ClienteViewModel clienteViewModel);
-        Task<Resposta> Atualizar(ClienteViewModel cliente);
+        Task<Resposta> Adcionar(ServicoViewModel servicoViewModel);
+        Task<Resposta> Atualizar(ServicoViewModel servico);
         Task<Resposta> ObterPorID(Guid id);        
         Task<Resposta> ObterTodos();
         Task<Resposta> ObterPorNome(string nome);

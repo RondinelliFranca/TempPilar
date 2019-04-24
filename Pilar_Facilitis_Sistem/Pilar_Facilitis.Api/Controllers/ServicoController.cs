@@ -12,9 +12,9 @@ namespace Pilar_Facilitis.Api.Controllers
     [ApiController]
     public class ServicoController : Controller
     {
-        private readonly IClienteService _service;
+        private readonly IServicoService _service;
 
-        public ServicoController(IClienteService service)
+        public ServicoController(IServicoService service)
         {
             _service = service;
         }
@@ -38,15 +38,15 @@ namespace Pilar_Facilitis.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Criar([FromBody] ClienteViewModel cliente)
+        public async Task<IActionResult> Criar([FromBody] ServicoViewModel servico)
         {
-            return Ok(await _service.Adcionar(cliente));
+            return Ok(await _service.Adcionar(servico));
         }
 
         [HttpPut]
-        public async Task<IActionResult> Atualizar([FromBody] ClienteViewModel cliente)
+        public async Task<IActionResult> Atualizar([FromBody] ServicoViewModel servico)
         {
-            return Ok(await _service.Atualizar(cliente));
+            return Ok(await _service.Atualizar(servico));
         }
 
         [HttpDelete]

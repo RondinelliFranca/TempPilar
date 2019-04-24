@@ -34,6 +34,7 @@ namespace Pilar_Facilitis.Domain.Entities
         public virtual Endereco Endereco { get; set; }
 
         public virtual ICollection<PontoAtendimentos> PontosAtendimento { get; set; }
+        public virtual ICollection<Chamado> Chamados { get; set; }
 
 
     }

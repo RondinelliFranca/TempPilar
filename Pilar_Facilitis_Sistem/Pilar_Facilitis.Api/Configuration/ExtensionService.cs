@@ -27,6 +27,8 @@ namespace Pilar_Facilitis.Api.Configuration
             services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             services.AddScoped<IEstadoRepository, EstadoRepository>();
             services.AddScoped<ICidadeRepository, CidadeRepository>();
+            services.AddScoped<IServicoRepository, ServicoRepository>();
+            services.AddScoped<IPontoAtendimentoRepository, PontoAtendimentoRepository>();
 
             #endregion
 
@@ -35,6 +37,7 @@ namespace Pilar_Facilitis.Api.Configuration
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IFuncionarioService, FuncionarioService>();
             services.AddScoped<IEnderecoService, EnderecoService>();
+            services.AddScoped<IServicoService, ServicoService>();
 
             #endregion
         }

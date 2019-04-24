@@ -20,5 +20,6 @@ namespace Pilar_Facilitis.Domain.Entities
         public string Desc_Servicos { get; set; }
 
         public float Area { get; set; }
+        public virtual ICollection<Chamado> Chamados { get; set; }
     }
 }

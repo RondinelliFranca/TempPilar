@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Pilar_Facilitis.Domain.Interfaces.Service;
+using Pilar_Facilitis.Domain.ViewModel;
 
 namespace Pilar_Facilitis.Api.Controllers
 {
@@ -11,36 +13,48 @@ namespace Pilar_Facilitis.Api.Controllers
     [ApiController]
     public class PontoAtendimentoController : ControllerBase
     {
-        // GET: api/PontoAtendimento
+        private readonly IPontoAtendimentoService _service;
+
+        public PontoAtendimentoController(IPontoAtendimentoService service)
+        {
+            _service = service;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Buscar()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(await _service.ObterTodos());
         }
 
-        // GET: api/PontoAtendimento/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("porNome/{nome}")]
+        public async Task<IActionResult> Buscar(string nome)
         {
-            return "value";
+            return Ok(await _service.ObterPorNome(nome));
         }
 
-        // POST: api/PontoAtendimento
+        [HttpGet("porid/{id}")]
+        public async Task<IActionResult> Buscar(Guid id)
+        {
+            return Ok(await _service.ObterPorID(id));
+        }
+
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Criar([FromBody] PontoAtendimentoViewModel pontoAtendimento)
         {
+            return Ok(await _service.Adcionar(pontoAtendimento));
         }
 
-        // PUT: api/PontoAtendimento/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public async Task<IActionResult> Atualizar([FromBody] PontoAtendimentoViewModel pontoAtendimento)
         {
+            return Ok(await _service.Atualizar(pontoAtendimento));
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Deletar(Guid id)
         {
+            return Ok(await _service.Remover(id));
         }
     }
 }
