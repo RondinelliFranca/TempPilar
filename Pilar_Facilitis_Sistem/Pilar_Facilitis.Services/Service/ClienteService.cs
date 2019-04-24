@@ -16,12 +16,12 @@ namespace Pilar_Facilitis.Services.Service
 {
     public class ClienteService : IClienteService
     {
-        private readonly IClienteRepository _clienteRepository;
+        private readonly IClienteRepository _repository;
         private readonly IUnidadeTrabalho _unidadeTrabalho;
         private readonly IMapper _mapeador;
-        public ClienteService(IClienteRepository clienteRepository, IUnidadeTrabalho unidadeTrabalho, IMapper mappeer)
+        public ClienteService(IClienteRepository repository, IUnidadeTrabalho unidadeTrabalho, IMapper mappeer)
         {
-            _clienteRepository = clienteRepository;
+            _repository = repository;
             _unidadeTrabalho = unidadeTrabalho;
             _mapeador = mappeer;
         }
@@ -30,11 +30,11 @@ namespace Pilar_Facilitis.Services.Service
             try
             {
                 var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
-                var resposta = ValidarCliente(clienteModel);
+                var resposta = Validar(clienteModel);
 
                 if (!resposta.Sucesso) return resposta;
 
-                var clienteBd = await _clienteRepository.InsereAsync(clienteModel);
+                var clienteBd = await _repository.InsereAsync(clienteModel);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
 
                 return resposta.Retorno(_mapeador.Map<ClienteViewModel>(clienteBd));
@@ -50,11 +50,11 @@ namespace Pilar_Facilitis.Services.Service
             try
             {
                 var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
-                var resposta = ValidarCliente(clienteModel);
+                var resposta = Validar(clienteModel);
 
                 if (!resposta.Sucesso) return resposta;
 
-                await _clienteRepository.Edita(clienteModel); 
+                await _repository.Edita(clienteModel); 
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
 
                 return resposta;
@@ -71,7 +71,7 @@ namespace Pilar_Facilitis.Services.Service
             {
                 var resposta = new Resposta();
 
-                var cliente = await _clienteRepository.BuscaAsync(id);
+                var cliente = await _repository.BuscaAsync(id);
 
                 if (cliente != null)
                 {
@@ -94,7 +94,7 @@ namespace Pilar_Facilitis.Services.Service
                 var resposta = new Resposta();                
                 return resposta.Retorno(
                     _mapeador.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(
-                        await _clienteRepository.BuscaTodosAsync()));
+                        await _repository.BuscaTodosAsync()));
             }
             catch (Exception e)
             {
@@ -107,7 +107,7 @@ namespace Pilar_Facilitis.Services.Service
             var resposta = new Resposta();
             return resposta.Retorno(
                 _mapeador.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(
-                    await _clienteRepository.BuscarPorNome(nome)));            
+                    await _repository.BuscarPorNome(nome)));            
         }
 
         public async Task<Resposta> Remover(Guid id)
@@ -115,14 +115,14 @@ namespace Pilar_Facilitis.Services.Service
             try
             {
                 var resposta = new Resposta();
-                var cliente = await _clienteRepository.BuscaAsync(id);
+                var cliente = await _repository.BuscaAsync(id);
                 if (cliente == null)
                 {
                     resposta.AdicionaErro("Inconsitência!", "Cliente não foi localizado!");
                     return resposta;
                 }
 
-                _clienteRepository.Exclui(cliente);
+                _repository.Exclui(cliente);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
                 return resposta;
             }
@@ -132,7 +132,7 @@ namespace Pilar_Facilitis.Services.Service
             }
         }
 
-        private Resposta ValidarCliente(Cliente cliente)
+        private Resposta Validar(Cliente cliente)
         {
             var resposta = new Resposta();
 
