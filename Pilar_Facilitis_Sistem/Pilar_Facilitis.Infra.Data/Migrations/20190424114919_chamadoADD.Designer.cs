@@ -150,7 +150,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                     b.ToTable("Enderecos");
                 });
 
-            modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Equipamentos", b =>
+            modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Equipamento", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -169,7 +169,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Equipamentos");
+                    b.ToTable("Equipamento");
                 });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Estado", b =>

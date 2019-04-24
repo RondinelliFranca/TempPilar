@@ -4,9 +4,9 @@ using Pilar_Facilitis.Domain.Entities;
 
 namespace Pilar_Facilitis.Infra.Data.Contexts.EntityConfig
 {
-    public class EquipamentosConfiguration : IEntityTypeConfiguration<Equipamentos>
+    public class EquipamentosConfiguration : IEntityTypeConfiguration<Equipamento>
     {     
-        public void Configure(EntityTypeBuilder<Equipamentos> builder)
+        public void Configure(EntityTypeBuilder<Equipamento> builder)
         {
             builder.HasKey(c => c.Id);
 

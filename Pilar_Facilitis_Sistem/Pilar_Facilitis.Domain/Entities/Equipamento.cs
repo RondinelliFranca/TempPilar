@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Pilar_Facilitis.Domain.Entities
 {
-    public class Equipamentos
+    public class Equipamento
     {
-        public Equipamentos()
+        public Equipamento()
         {
             this.Id = Guid.NewGuid();
         }

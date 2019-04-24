@@ -26,7 +26,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Equipamentos",
+                name: "Equipamento",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -276,7 +276,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 name: "Enderecos");
 
             migrationBuilder.DropTable(
-                name: "Equipamentos");
+                name: "Equipamento");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

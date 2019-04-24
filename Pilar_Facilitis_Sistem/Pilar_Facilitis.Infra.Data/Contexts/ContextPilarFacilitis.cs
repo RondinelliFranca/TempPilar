@@ -15,7 +15,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.Base
         public DbSet<Cidade> Cidades { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
-        public DbSet<Equipamentos> Equipamentos{ get; set; }
+        public DbSet<Equipamento> Equipamentos{ get; set; }
         public DbSet<Estado> Estados{ get; set; }
         public DbSet<Funcionario> Funcionarios{ get; set; }        
         public DbSet<PontoAtendimentos> PontosAtendimento { get; set; }
