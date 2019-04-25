@@ -43,7 +43,7 @@ namespace Pilar_Facilitis.Infra.Data.Repository
 
         public async Task<PontoAtendimentos> BuscaAsync(Guid id)
         {
-            return Tabela.Where(x => x.Id == id).Include(e => e.Endereco).FirstOrDefault();
+            return Tabela.Where(x => x.Id == id).Include(e => e.Endereco).Include(c => c.Cliente).FirstOrDefault();
         }
     }
 }

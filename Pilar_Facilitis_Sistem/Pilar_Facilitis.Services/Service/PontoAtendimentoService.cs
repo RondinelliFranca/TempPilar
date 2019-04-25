@@ -16,14 +16,16 @@ namespace Pilar_Facilitis.Services.Service
     public class PontoAtendimentoService : IPontoAtendimentoService
     {
         private readonly IPontoAtendimentoRepository _repository;
+        private readonly IClienteRepository _clienteRepository;
         private readonly IUnidadeTrabalho _unidadeTrabalho;
         private readonly IMapper _mapeador;
 
-        public PontoAtendimentoService(IPontoAtendimentoRepository pontoAtendimentoRepository, IUnidadeTrabalho unidadeTrabalho, IMapper mappeer)
+        public PontoAtendimentoService(IPontoAtendimentoRepository pontoAtendimentoRepository, IUnidadeTrabalho unidadeTrabalho, IMapper mappeer, IClienteRepository clienteRepository)
         {
             _repository = pontoAtendimentoRepository;
             _unidadeTrabalho = unidadeTrabalho;
             _mapeador = mappeer;
+            _clienteRepository = clienteRepository;
         }
         public async Task<Resposta> Adcionar(PontoAtendimentoViewModel pontoAtendimentoViewModel)
         {
@@ -31,6 +33,8 @@ namespace Pilar_Facilitis.Services.Service
             {
                 var pontoAtendimentoModel = _mapeador.Map<PontoAtendimentos>(pontoAtendimentoViewModel);
                 var resposta = Validar(pontoAtendimentoModel);
+                
+                pontoAtendimentoModel.Cliente = await _clienteRepository.BuscaAsync(pontoAtendimentoViewModel.ClienteId);
 
                 if (!resposta.Sucesso) return resposta;
 

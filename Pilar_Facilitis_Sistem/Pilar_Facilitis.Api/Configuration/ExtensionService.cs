@@ -38,6 +38,7 @@ namespace Pilar_Facilitis.Api.Configuration
             services.AddScoped<IFuncionarioService, FuncionarioService>();
             services.AddScoped<IEnderecoService, EnderecoService>();
             services.AddScoped<IServicoService, ServicoService>();
+            services.AddScoped<IPontoAtendimentoService, PontoAtendimentoService>();
 
             #endregion
         }

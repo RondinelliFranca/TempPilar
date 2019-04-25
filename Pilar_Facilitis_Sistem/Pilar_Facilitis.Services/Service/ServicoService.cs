@@ -36,7 +36,7 @@ namespace Pilar_Facilitis.Services.Service
                 var pontoAtendimentoBd = await _repository.InsereAsync(servicoModel);
                 await _unidadeTrabalho.SalvaAlteracoesAsync();
 
-                return resposta.Retorno(_mapeador.Map<PontoAtendimentoViewModel>(pontoAtendimentoBd));
+                return resposta.Retorno(_mapeador.Map<ServicoViewModel>(pontoAtendimentoBd));
             }
             catch (Exception e)
             {
