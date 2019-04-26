@@ -31,13 +31,13 @@ namespace Pilar_Facilitis.Services.Service
         }
         public async Task<Resposta> Adcionar(ChamadosViewModel chamadoViewModel)
         {
-            var chamado = _mapeador.Map<Chamado>(chamadoViewModel);
-            chamado.Cliente = await _clienteRepository.BuscaAsync(chamadoViewModel.IdCliente);
-            chamado.PontoAtendimento = await _pontoAtendimentoRepository.BuscaAsync(chamadoViewModel.IdPontoAtendimento);
-            chamado.Servico = await _servicoRepository.BuscaAsync(chamadoViewModel.IdServico);
+            var chamadoModel = _mapeador.Map<Chamado>(chamadoViewModel);
+            await ConfigurarChamado(chamadoViewModel, chamadoModel);
+            var resposta = Validar(chamadoModel);
+
 
             return null;
-        }
+        }       
 
         public Task<Resposta> Atualizar(ChamadosViewModel clienteViewModel)
         {
@@ -66,6 +66,13 @@ namespace Pilar_Facilitis.Services.Service
             }
 
             return resposta;
+        }
+
+        private async Task ConfigurarChamado(ChamadosViewModel chamadoViewModel, Chamado chamado)
+        {
+            chamado.Cliente = await _clienteRepository.BuscaAsync(chamadoViewModel.IdCliente);
+            chamado.PontoAtendimento = await _pontoAtendimentoRepository.BuscaAsync(chamadoViewModel.IdPontoAtendimento);
+            chamado.Servico = await _servicoRepository.BuscaAsync(chamadoViewModel.IdServico);
         }
     }
 }

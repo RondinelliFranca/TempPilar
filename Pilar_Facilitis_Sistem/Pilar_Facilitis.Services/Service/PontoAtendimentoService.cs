@@ -49,13 +49,14 @@ namespace Pilar_Facilitis.Services.Service
             }
         }
 
-        public async Task<Resposta> Atualizar(PontoAtendimentoViewModel pontoAtendimento)
+        public async Task<Resposta> Atualizar(PontoAtendimentoViewModel pontoAtendimentoViewModel)
         {
             try
             {
-                var pontoAtendimentosModel = _mapeador.Map<PontoAtendimentos>(pontoAtendimento);
+                var pontoAtendimentosModel = _mapeador.Map<PontoAtendimentos>(pontoAtendimentoViewModel);
                 var resposta = Validar(pontoAtendimentosModel);
 
+                pontoAtendimentosModel.Cliente = await _clienteRepository.BuscaAsync(pontoAtendimentoViewModel.ClienteId);
                 if (!resposta.Sucesso) return resposta;
 
                 await _repository.Edita(pontoAtendimentosModel);
