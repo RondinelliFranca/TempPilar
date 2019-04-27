@@ -15,7 +15,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -167,7 +167,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Equipamento");
+                    b.ToTable("Equipamentos");
                 });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Estado", b =>

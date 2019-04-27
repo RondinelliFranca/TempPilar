@@ -10,6 +10,7 @@ namespace Pilar_Facilitis.Domain.Interfaces.Service
         Task<Resposta> Adcionar(PontoAtendimentoViewModel pontoAtendimento);
         Task<Resposta> Atualizar(PontoAtendimentoViewModel pontoAtendimentoViewModel);
         Task<Resposta> ObterPorID(Guid id);
+        Task<Resposta> ObterPorCliente(Guid id);
         Task<Resposta> ObterTodos();
         Task<Resposta> ObterPorNome(string nome);
         Task<Resposta> Remover(Guid id);

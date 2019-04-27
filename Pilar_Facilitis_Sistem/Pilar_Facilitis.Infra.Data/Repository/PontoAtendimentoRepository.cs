@@ -31,6 +31,11 @@ namespace Pilar_Facilitis.Infra.Data.Repository
             return Tabela.Include(e => e.Endereco).ToList();
         }
 
+        public async Task<List<PontoAtendimentos>> BuscarPorClienteAsync(Guid id)
+        {
+            return Tabela.Where(x=>x.Cliente.Id == id).Include(e => e.Endereco).ToList();
+        }
+
         public async Task<List<PontoAtendimentos>> BuscarPorNome(string nome)
         {
             return Tabela.Where(x => x.Nome.Contains(nome)).Include(e => e.Endereco).ToList();

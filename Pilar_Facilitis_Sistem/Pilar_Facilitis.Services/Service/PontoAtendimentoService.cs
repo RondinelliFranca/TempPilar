@@ -92,6 +92,21 @@ namespace Pilar_Facilitis.Services.Service
             }
         }
 
+        public async Task<Resposta> ObterPorCliente(Guid id)
+        {
+            try
+            {
+                var resposta = new Resposta();
+                return resposta.Retorno(
+                    _mapeador.Map<IEnumerable<PontoAtendimentos>, IEnumerable<PontoAtendimentoViewModel>>(
+                        await _repository.BuscaTodosAsync()));
+            }
+            catch (Exception e)
+            {
+                return new Resposta(e);
+            }
+        }
+
         public async Task<Resposta> ObterTodos()
         {
             try

@@ -11,6 +11,7 @@ namespace Pilar_Facilitis.Domain.Interfaces.Repository
         Task<PontoAtendimentos> Edita(PontoAtendimentos pontoAtendimento);
         Task<PontoAtendimentos> BuscaAsync(Guid id);
         Task<List<PontoAtendimentos>> BuscaTodosAsync();
+        Task<List<PontoAtendimentos>> BuscarPorClienteAsync(Guid id);
         void Exclui(PontoAtendimentos pontoAtendimento);
         Task<List<PontoAtendimentos>> BuscarPorNome(string nome);
 

@@ -56,5 +56,11 @@ namespace Pilar_Facilitis.Api.Controllers
         {
             return Ok(await _service.Remover(id));
         }
+
+        [HttpGet("porCliente/{id}")]
+        public async Task<IActionResult> BuscarPorCliente(Guid id)
+        {
+            return Ok(await _service.ObterPorCliente(id));
+        }
     }
 }

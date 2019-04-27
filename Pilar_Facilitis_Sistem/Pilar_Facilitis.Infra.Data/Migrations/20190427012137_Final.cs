@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pilar_Facilitis.Infra.Data.Migrations
 {
-    public partial class chamadoADD : Migration
+    public partial class Final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Equipamento",
+                name: "Equipamentos",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -276,7 +276,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 name: "Enderecos");
 
             migrationBuilder.DropTable(
-                name: "Equipamento");
+                name: "Equipamentos");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

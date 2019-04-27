@@ -23,6 +23,7 @@
     <Compile Remove="Migrations\20190419153455_InitialCre.cs" />
     <Compile Remove="Migrations\20190424012413_chamadoADD.cs" />
     <Compile Remove="Migrations\20190424114625_chamadoADD.cs" />
+    <Compile Remove="Migrations\20190424114919_chamadoADD.cs" />
   </ItemGroup>
 
   <ItemGroup>

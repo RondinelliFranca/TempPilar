@@ -10,14 +10,14 @@ using Pilar_Facilitis.Infra.Data.Contexts.Base;
 namespace Pilar_Facilitis.Infra.Data.Migrations
 {
     [DbContext(typeof(ContextPilarFacilitis))]
-    [Migration("20190424114919_chamadoADD")]
-    partial class chamadoADD
+    [Migration("20190427012137_Final")]
+    partial class Final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -169,7 +169,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Equipamento");
+                    b.ToTable("Equipamentos");
                 });
 
             modelBuilder.Entity("Pilar_Facilitis.Domain.Entities.Estado", b =>

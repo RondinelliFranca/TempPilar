@@ -35,8 +35,13 @@ namespace Pilar_Facilitis.Services.Service
             await ConfigurarChamado(chamadoViewModel, chamadoModel);
             var resposta = Validar(chamadoModel);
 
+            if (!resposta.Sucesso) return resposta;
 
-            return null;
+            var chamadodb = await _repository.InsereAsync(chamadoModel);
+            await _unidadeTrabalho.SalvaAlteracoesAsync();
+
+
+            return resposta;
         }       
 
         public Task<Resposta> Atualizar(ChamadosViewModel clienteViewModel)
