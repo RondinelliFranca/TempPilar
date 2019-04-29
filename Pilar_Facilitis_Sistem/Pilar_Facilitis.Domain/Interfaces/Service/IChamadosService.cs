@@ -11,5 +11,6 @@ namespace Pilar_Facilitis.Domain.Interfaces.Service
         Task<Resposta> Atualizar(ChamadosViewModel clienteViewModel);
         Task<Resposta> ObterPorId(Guid id);
         Task<Resposta> ObterTodos();
+        Task<Resposta> ObterTodosPorClienteId(Guid id);
     }
 }

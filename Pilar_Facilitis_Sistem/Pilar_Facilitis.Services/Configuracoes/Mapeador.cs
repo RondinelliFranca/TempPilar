@@ -25,6 +25,7 @@ namespace Pilar_Facilitis.Services.Configuracoes
                 CreateMap<Funcionario, FuncionarioViewModel>();
                 CreateMap<Servico, ServicoViewModel>();
                 CreateMap<PontoAtendimentos, PontoAtendimentoViewModel>();
+                CreateMap<Chamado, ChamadosViewModel>();
             }
         }
 
@@ -37,6 +38,9 @@ namespace Pilar_Facilitis.Services.Configuracoes
                 CreateMap<FuncionarioViewModel, Funcionario>();
                 CreateMap<PontoAtendimentoViewModel, PontoAtendimentos>();
                 CreateMap<ServicoViewModel, Servico>();
+                CreateMap<ChamadosViewModel, Chamado>();
+
+
 
             }
         }

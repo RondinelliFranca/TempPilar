@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Pilar_Facilitis.Domain.Entities;
@@ -19,19 +20,36 @@ namespace Pilar_Facilitis.Infra.Data.Repository
             Tabela = contexto.Tabela<Chamado>();
         }
 
-        public Task<Chamado> Edita(Chamado chamado)
+        public async Task<Chamado> Edita(Chamado chamado)
         {
-            throw new NotImplementedException();
+            Tabela.Update(chamado).State = EntityState.Modified;
+            var entity = Tabela.Update(chamado).Entity;
+            return await Tabela.Include(e => e.Cliente)
+                                        .Include(e => e.Servico)
+                                        .Include(e => e.PontoAtendimento).FirstOrDefaultAsync();
         }
 
-        public Task<List<Chamado>> BuscaTodosAsync()
+        public async Task<List<Chamado>> BuscaTodosAsync()
         {
-            throw new NotImplementedException();
+            return Tabela.Include(e => e.Cliente)
+                                 .Include(e => e.Servico)
+                                 .Include(e => e.PontoAtendimento).ToList();
         }
 
-        public Task<List<Chamado>> BuscaTodosPorClienteAsync(Guid id)
+        public async Task<List<Chamado>> BuscaTodosPorClienteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return Tabela.Where(x => x.Cliente.Id == id)
+                               .Include(e => e.Servico)
+                               .Include(e => e.PontoAtendimento).ToList();
+        }
+
+        public Task<Chamado> BuscaPorId(Guid id)
+        {
+            return Tabela.Where(x => x.Id == id)
+                .Include(e => e.Cliente)
+                .Include(e => e.Servico)                                              
+                .Include(e => e.PontoAtendimento)                                              
+                .FirstOrDefaultAsync();
         }
     }
 }

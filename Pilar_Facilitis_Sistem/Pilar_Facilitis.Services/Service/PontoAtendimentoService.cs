@@ -99,7 +99,7 @@ namespace Pilar_Facilitis.Services.Service
                 var resposta = new Resposta();
                 return resposta.Retorno(
                     _mapeador.Map<IEnumerable<PontoAtendimentos>, IEnumerable<PontoAtendimentoViewModel>>(
-                        await _repository.BuscaTodosAsync()));
+                        await _repository.BuscarPorClienteAsync(id)));
             }
             catch (Exception e)
             {

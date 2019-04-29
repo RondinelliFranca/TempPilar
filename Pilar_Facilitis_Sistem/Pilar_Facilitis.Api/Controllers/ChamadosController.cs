@@ -42,5 +42,12 @@ namespace Pilar_Facilitis.Api.Controllers
         {
             return Ok(await _service.Atualizar(chamados));
         }
+
+        [HttpGet("todosporid/{id}")]
+        public async Task<IActionResult> BuscarTodosPorCliente(Guid id)
+        {
+            return Ok(await _service.ObterTodosPorClienteId(id));
+        }
+
     }
 }
