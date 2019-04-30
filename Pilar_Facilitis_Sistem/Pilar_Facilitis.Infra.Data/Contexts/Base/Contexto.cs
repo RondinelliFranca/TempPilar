@@ -34,11 +34,7 @@ namespace Pilar_Facilitis.Infra.Data.Contexts.Base
             catch (DbUpdateConcurrencyException ex)
             {
                 throw new Exception("O registro foi modificado por outro usuário.", ex);
-            }
-            //catch (DbEntityValidationException ex)
-            //{
-            //    throw new SalvarException("Ocorreu um erro ao validar os dados informados.", ex);
-            //}
+            }            
             catch (DbUpdateException ex)
             {
                 throw new Exception("Ocorreu um erro ao gravar as suas alterações.", ex);

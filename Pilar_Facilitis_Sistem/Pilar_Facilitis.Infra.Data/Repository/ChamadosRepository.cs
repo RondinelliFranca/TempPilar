@@ -31,9 +31,9 @@ namespace Pilar_Facilitis.Infra.Data.Repository
 
         public async Task<List<Chamado>> BuscaTodosAsync()
         {
-            return Tabela.Include(e => e.Cliente)
+            return Tabela.Include(e => e.Cliente.Endereco)
                                  .Include(e => e.Servico)
-                                 .Include(e => e.PontoAtendimento).ToList();
+                                 .Include(e => e.PontoAtendimento.Endereco).ToList();
         }
 
         public async Task<List<Chamado>> BuscaTodosPorClienteAsync(Guid id)

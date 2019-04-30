@@ -9,6 +9,7 @@ using Pilar_Facilitis.Domain.Interfaces.Service;
 using Pilar_Facilitis.Domain.Modelos;
 using Pilar_Facilitis.Domain.Validacoes;
 using Pilar_Facilitis.Domain.ViewModel;
+using Pilar_Facilitis.Util.Enum;
 using Pilar_Facilitis.Util.Mensagens;
 
 namespace Pilar_Facilitis.Services.Service
@@ -49,12 +50,14 @@ namespace Pilar_Facilitis.Services.Service
         public async Task<Resposta> Atualizar(ChamadosViewModel chamadoViewModel)
         {
             var chamadoModel = _mapeador.Map<Chamado>(chamadoViewModel);
+            chamadoModel.DataAlteracao = DateTime.Now;
+            chamadoModel.Status = StatusEnum.ABERTO.Valor;
             await ConfigurarChamado(chamadoViewModel, chamadoModel);
             var resposta = Validar(chamadoModel);
 
             if (!resposta.Sucesso) return resposta;
 
-            var chamadodb = await _repository.InsereAsync(chamadoModel);
+            var chamadodb = await _repository.Edita(chamadoModel);
             await _unidadeTrabalho.SalvaAlteracoesAsync();
 
 
@@ -88,9 +91,10 @@ namespace Pilar_Facilitis.Services.Service
         {
             try
             {
-                var resposta = new Resposta();
+                var resposta = new Resposta();                
+
                 return resposta.Retorno(
-                    _mapeador.Map<IEnumerable<Chamado>, IEnumerable<ChamadosViewModel>>(
+                    _mapeador.Map<IEnumerable<Chamado>, IEnumerable<ChamadosRetornoViewModel>>(
                         await _repository.BuscaTodosAsync()));
             }
             catch (Exception e)
@@ -119,6 +123,8 @@ namespace Pilar_Facilitis.Services.Service
             chamado.PontoAtendimento = await _pontoAtendimentoRepository.BuscaAsync(chamadoViewModel.IdPontoAtendimento);
             chamado.Servico = await _servicoRepository.BuscaAsync(chamadoViewModel.IdServico);
         }
+
+
 
         public async Task<Resposta> ObterTodosPorClienteId(Guid id)
         {

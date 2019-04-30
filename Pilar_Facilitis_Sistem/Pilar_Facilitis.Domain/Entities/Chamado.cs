@@ -12,6 +12,7 @@ namespace Pilar_Facilitis.Domain.Entities
         public Guid Id { get; set; }
 
         public DateTime DataSolicitacao { get; set; } = DateTime.Now;
+        public DateTime? DataAlteracao { get; set; } 
 
         public int Prioridade { get; set; }
 

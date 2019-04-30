@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pilar_Facilitis.Infra.Data.Migrations
 {
-    public partial class Final : Migration
+    public partial class AddProductReviews : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -147,6 +147,7 @@ namespace Pilar_Facilitis.Infra.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     DataSolicitacao = table.Column<DateTime>(nullable: false),
+                    DataAlteracao = table.Column<DateTime>(nullable: true),
                     Prioridade = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     DescricaoProblema = table.Column<string>(nullable: true),

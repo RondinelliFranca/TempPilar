@@ -29,7 +29,7 @@ namespace Pilar_Facilitis.Services.Service
         {
             try
             {
-                var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
+                var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);                          
                 var resposta = Validar(clienteModel);
 
                 if (!resposta.Sucesso) return resposta;
@@ -49,7 +49,7 @@ namespace Pilar_Facilitis.Services.Service
         {
             try
             {
-                var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);
+                var clienteModel = _mapeador.Map<Cliente>(clienteViewModel);                
                 var resposta = Validar(clienteModel);
 
                 if (!resposta.Sucesso) return resposta;

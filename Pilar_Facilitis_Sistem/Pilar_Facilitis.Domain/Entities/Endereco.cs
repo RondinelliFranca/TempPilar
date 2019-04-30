@@ -27,7 +27,7 @@ namespace Pilar_Facilitis.Domain.Entities
 
         public string Complemento { get; set; }
 
-        public int Pais { get; set; }
+        public int Pais { get; set; } = 1;
 
         public int Estado { get; set; }
 
